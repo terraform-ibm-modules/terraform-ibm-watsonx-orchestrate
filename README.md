@@ -20,7 +20,7 @@ For information, see "Module names and descriptions" at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=module-names-and-descriptions
 -->
 
-TODO: Replace this with a description of the modules in this repo.
+This module is used to provision an instance of the Watsonx Orchestrator service.
 
 
 <!-- The following content is automatically populated by the pre-commit hook -->
@@ -28,7 +28,6 @@ TODO: Replace this with a description of the modules in this repo.
 ## Overview
 * [terraform-ibm-watsonx-orchestrate](#terraform-ibm-watsonx-orchestrate)
 * [Examples](./examples)
-    * [Advanced example](./examples/advanced)
     * [Basic example](./examples/basic)
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
@@ -56,7 +55,18 @@ unless real values don't help users know what to change.
 -->
 
 ```hcl
+provider "ibm" {
+  ibmcloud_api_key = "XXXXXXXXXXXXXX" # pragma: allowlist secret
+  region           = "us-south"
+}
 
+module "watsonx_orchestrator" {
+  source = "terraform-ibm-modules/watsonx-orchestrate/ibm"
+  version           = "X.X.X" # Replace "X.X.X" with a release version to lock into a specific
+  location = "us-south" # pragma: allowlist secret
+  resource_group_name = "watsonx-orch-resource-group"
+  watsonx_orchestrate_plan = "standard"
+}
 ```
 
 ### Required access policies
@@ -97,23 +107,42 @@ statement instead the previous block.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.70.1 |
 
 ### Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.1.6 |
 
 ### Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [ibm_resource_instance.orchestrate_instance](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.70.1/docs/resources/resource_instance) | resource |
+| [ibm_resource_instance.existing_orchestrate_instance](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.70.1/docs/data-sources/resource_instance) | data source |
 
 ### Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_existing_orchestrate_instance"></a> [existing\_orchestrate\_instance](#input\_existing\_orchestrate\_instance) | CRN of the an existing watsonx Orchestrate instance. | `string` | `null` | no |
+| <a name="input_location"></a> [location](#input\_location) | The location that's used with the IBM Cloud Terraform IBM provider. It's also used during resource creation. | `string` | `"us-south"` | no |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of a new or an existing resource group where the resources are created. | `string` | n/a | yes |
+| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | The name to be used with watsonx Orchestrate resources as a prefix. | `string` | `"watsonx-orchestrate"` | no |
+| <a name="input_use_existing_resource_group"></a> [use\_existing\_resource\_group](#input\_use\_existing\_resource\_group) | Determines whether to use an existing resource group. | `bool` | `false` | no |
+| <a name="input_watsonx_orchestrate_plan"></a> [watsonx\_orchestrate\_plan](#input\_watsonx\_orchestrate\_plan) | The plan that's used to provision the watsonx Orchestrate instance. | `string` | `"standard"` | no |
 
 ### Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_watsonx_orchestrate_crn"></a> [watsonx\_orchestrate\_crn](#output\_watsonx\_orchestrate\_crn) | The CRN of the watsonx Orchestrate instance. |
+| <a name="output_watsonx_orchestrate_dashboard_url"></a> [watsonx\_orchestrate\_dashboard\_url](#output\_watsonx\_orchestrate\_dashboard\_url) | The dashboard URL of the watsonx Orchestrate instance. |
+| <a name="output_watsonx_orchestrate_guid"></a> [watsonx\_orchestrate\_guid](#output\_watsonx\_orchestrate\_guid) | The GUID of the watsonx Orchestrate instance. |
+| <a name="output_watsonx_orchestrate_name"></a> [watsonx\_orchestrate\_name](#output\_watsonx\_orchestrate\_name) | The name of the watsonx Orchestrate instance. |
+| <a name="output_watsonx_orchestrate_plan_id"></a> [watsonx\_orchestrate\_plan\_id](#output\_watsonx\_orchestrate\_plan\_id) | The plan ID of the watsonx Orchestrate instance. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set-up steps for contributors to follow -->

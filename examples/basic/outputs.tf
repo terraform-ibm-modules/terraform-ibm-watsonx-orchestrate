@@ -2,17 +2,27 @@
 # Outputs
 ########################################################################################################################
 
-output "cos_instance_id" {
-  description = "COS instance id"
-  value       = ibm_resource_instance.cos_instance.id
+output "crn" {
+  description = "The CRN of the watsonx Orchestrate instance."
+  value       = module.watsonx_orchestrator.watsonx_orchestrate_crn
 }
 
-output "resource_group_name" {
-  description = "Resource group name"
-  value       = module.resource_group.resource_group_name
+output "guid" {
+  description = "The GUID of the watsonx Orchestrate instance."
+  value       = module.watsonx_orchestrator.watsonx_orchestrate_guid
 }
 
-output "resource_group_id" {
-  description = "Resource group ID"
-  value       = module.resource_group.resource_group_id
+output "name" {
+  description = "The name of the watsonx Orchestrate instance."
+  value       = module.watsonx_orchestrator.watsonx_orchestrate_name
+}
+
+output "id" {
+  description = "The plan ID of the watsonx Orchestrate instance."
+  value       = module.watsonx_orchestrator.watsonx_orchestrate_plan_id
+}
+
+output "dashboard_url" {
+  description = "The dashboard URL of the watsonx Orchestrate instance."
+  value       = module.watsonx_orchestrator.watsonx_orchestrate_dashboard_url
 }
