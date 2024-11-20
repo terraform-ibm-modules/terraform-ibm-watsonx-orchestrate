@@ -21,7 +21,7 @@ module "watsonx_orchestrate_crn_parser" {
 }
 
 module "watsonx_orchestrator" {
-  source                      = "../.."
+  source                                    = "../.."
   existing_watsonx_orchestrate_instance_crn = var.existing_watsonx_orchestrate_instance_crn
-  resource_group_id         = module.resource_group.resource_group_id
+  resource_group_id                         = module.resource_group.resource_group_id
 }

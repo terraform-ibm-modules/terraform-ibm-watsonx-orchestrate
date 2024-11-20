@@ -2,7 +2,7 @@
 # Outputs
 ########################################################################################################################
 
-output "watsonx_data_name" {
-  description = "The CRN of the watsonx.data instance."
-  value       = module.existing_watsonx_data_instance.watsonx_data_name
+output "name" {
+  description = "The name of the watsonx Orchestrate instance."
+  value       = module.watsonx_orchestrator.watsonx_orchestrate_name
 }
