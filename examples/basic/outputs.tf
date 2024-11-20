@@ -26,3 +26,13 @@ output "dashboard_url" {
   description = "The dashboard URL of the watsonx Orchestrate instance."
   value       = module.watsonx_orchestrator.watsonx_orchestrate_dashboard_url
 }
+
+output "resource_group_id" {
+  description = "The resource group ID to provision the watsonx.data instance."
+  value       = module.resource_group.resource_group_id
+}
+
+output "resource_group_name" {
+  description = "The resource group name to provision the watsonx.data instance."
+  value       = module.resource_group.resource_group_name
+}

@@ -1,13 +1,12 @@
-<!-- Update this title with a descriptive name. Use sentence case. -->
-# Terraform modules template project
+# Terraform IBM watsonx.orchestrate
 
 <!--
 Update status and "latest release" badges:
   1. For the status options, see https://terraform-ibm-modules.github.io/documentation/#/badge-status
   2. Update the "latest release" badge to point to the correct module's repo. Replace "terraform-ibm-module-template" in two places.
 -->
-[![Incubating (Not yet consumable)](https://img.shields.io/badge/status-Incubating%20(Not%20yet%20consumable)-red)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
-[![latest release](https://img.shields.io/github/v/release/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate?logo=GitHub&sort=semver)](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/releases/latest)
+[![Stable (With quality checks)](https://img.shields.io/badge/Status-Stable%20(With%20quality%20checks)-green)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
+[![latest release](https://img.shields.io/github/v/release/terraform-ibm-modules/terraform-ibm-watsonx-data?logo=GitHub&sort=semver)](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-data/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
@@ -20,8 +19,7 @@ For information, see "Module names and descriptions" at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=module-names-and-descriptions
 -->
 
-This module is used to provision an instance of the Watsonx Orchestrator service.
-
+IBM watsonx Orchestrate is a multi-tenant and cloud-native solution that is deployed as a managed software as a service (SaaS) or that you can install on premises.For more information visit [here](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
@@ -29,6 +27,7 @@ This module is used to provision an instance of the Watsonx Orchestrator service
 * [terraform-ibm-watsonx-orchestrate](#terraform-ibm-watsonx-orchestrate)
 * [Examples](./examples)
     * [Basic example](./examples/basic)
+    * [Basic example](./examples/existing-instance)
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
 
@@ -62,10 +61,10 @@ provider "ibm" {
 
 module "watsonx_orchestrator" {
   source = "terraform-ibm-modules/watsonx-orchestrate/ibm"
-  version           = "X.X.X" # Replace "X.X.X" with a release version to lock into a specific
-  location = "us-south" # pragma: allowlist secret
-  resource_group_name = "watsonx-orch-resource-group"
-  watsonx_orchestrate_plan = "standard"
+  version           = "X.Y.Z" # Replace "X.Y.Z" with a release version to lock into a specific
+  region                = "us-south"
+  watsonx_orchestrate_plan     = "lite"
+  resource_group_id     = "xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX"
 }
 ```
 
@@ -112,26 +111,23 @@ statement instead the previous block.
 
 ### Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.1.6 |
+No modules.
 
 ### Resources
 
 | Name | Type |
 |------|------|
 | [ibm_resource_instance.orchestrate_instance](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.70.1/docs/resources/resource_instance) | resource |
-| [ibm_resource_instance.existing_orchestrate_instance](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.70.1/docs/data-sources/resource_instance) | data source |
+| [ibm_resource_instance.existing_watsonx_orchestrate_instance_crn](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.70.1/docs/data-sources/resource_instance) | data source |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_existing_orchestrate_instance"></a> [existing\_orchestrate\_instance](#input\_existing\_orchestrate\_instance) | CRN of the an existing watsonx Orchestrate instance. | `string` | `null` | no |
-| <a name="input_location"></a> [location](#input\_location) | The location that's used with the IBM Cloud Terraform IBM provider. It's also used during resource creation. | `string` | `"us-south"` | no |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of a new or an existing resource group where the resources are created. | `string` | n/a | yes |
-| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | The name to be used with watsonx Orchestrate resources as a prefix. | `string` | `"watsonx-orchestrate"` | no |
-| <a name="input_use_existing_resource_group"></a> [use\_existing\_resource\_group](#input\_use\_existing\_resource\_group) | Determines whether to use an existing resource group. | `bool` | `false` | no |
+| <a name="input_existing_watsonx_orchestrate_instance_crn"></a> [existing\_watsonx\_orchestrate\_instance\_crn](#input\_existing\_watsonx\_orchestrate\_instance\_crn) | The CRN of the an existing watsonx.orchestrate instance. If no value is passed, and new instance will be provisioned | `string` | `null` | no |
+| <a name="input_region"></a> [region](#input\_region) | The location that's used with the IBM Cloud Terraform IBM provider. It's also used during resource creation. | `string` | `"us-south"` | no |
+| <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The resource group ID where the watsonx data instance is created. | `string` | n/a | yes |
+| <a name="input_watsonx_orchestrate_name"></a> [watsonx\_orchestrate\_name](#input\_watsonx\_orchestrate\_name) | The name of the watsonx.orchestrate instance. | `string` | `"watsonx-orchestrate"` | no |
 | <a name="input_watsonx_orchestrate_plan"></a> [watsonx\_orchestrate\_plan](#input\_watsonx\_orchestrate\_plan) | The plan that's used to provision the watsonx Orchestrate instance. | `string` | `"standard"` | no |
 
 ### Outputs

@@ -1,41 +1,29 @@
 ########################################################################################################################
 # Input Variables
 ########################################################################################################################
-variable "location" {
+variable "watsonx_orchestrate_name" {
+  type        = string
+  description = "The name of the watsonx.orchestrate instance."
+  default     = "watsonx-orchestrate"
+}
+
+variable "resource_group_id" {
+  description = "The resource group ID where the watsonx data instance is created."
+  type        = string
+}
+
+variable "region" {
   default     = "us-south"
   description = "The location that's used with the IBM Cloud Terraform IBM provider. It's also used during resource creation."
   type        = string
   validation {
-    condition     = contains(["us-south"], var.location)
+    condition     = contains(["us-south"], var.region)
     error_message = "You must specify `us-south` as the IBM Cloud location."
   }
 }
-
-variable "use_existing_resource_group" {
-  type        = bool
-  description = "Determines whether to use an existing resource group."
-  default     = false
-}
-
-variable "resource_group_name" {
-  type        = string
-  description = "The name of a new or an existing resource group where the resources are created."
-}
-
-variable "resource_prefix" {
-  description = "The name to be used with watsonx Orchestrate resources as a prefix."
-  type        = string
-  default     = "watsonx-orchestrate"
-
-  validation {
-    condition     = var.resource_prefix != "" && length(var.resource_prefix) <= 25
-    error_message = "You must provide a value for the resource_prefix variable and the resource_prefix length can't exceed 25 characters."
-  }
-}
-
-variable "existing_orchestrate_instance" {
+variable "existing_watsonx_orchestrate_instance_crn" {
   default     = null
-  description = "CRN of the an existing watsonx Orchestrate instance."
+  description = "The CRN of the an existing watsonx.orchestrate instance. If no value is passed, and new instance will be provisioned"
   type        = string
 }
 

@@ -11,14 +11,17 @@ module "resource_group" {
 }
 
 ########################################################################################################################
-# Watsonx Orchestrator instance
+# Watsonx Data
 ########################################################################################################################
 
+module "watsonx_orchestrate_crn_parser" {
+  source  = "terraform-ibm-modules/common-utilities/ibm//modules/crn-parser"
+  version = "1.1.0"
+  crn     = var.existing_watsonx_orchestrate_instance_crn
+}
 
 module "watsonx_orchestrator" {
-  source                   = "../.."
-  region                   = var.region
-  resource_group_id        = module.resource_group.resource_group_id
-  watsonx_orchestrate_name = "${var.prefix}-orchestrate-instance"
-  watsonx_orchestrate_plan = "standard"
+  source                      = "../.."
+  existing_watsonx_orchestrate_instance_crn = var.existing_watsonx_orchestrate_instance_crn
+  resource_group_id         = module.resource_group.resource_group_id
 }

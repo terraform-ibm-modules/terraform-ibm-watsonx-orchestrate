@@ -1,31 +1,24 @@
 locals {
-  watsonx_orchestrate_crn           = var.existing_orchestrate_instance != null ? data.ibm_resource_instance.existing_orchestrate_instance[0].crn : resource.ibm_resource_instance.orchestrate_instance[0].crn
-  watsonx_orchestrate_guid          = var.existing_orchestrate_instance != null ? data.ibm_resource_instance.existing_orchestrate_instance[0].guid : resource.ibm_resource_instance.orchestrate_instance[0].guid
-  watsonx_orchestrate_name          = var.existing_orchestrate_instance != null ? data.ibm_resource_instance.existing_orchestrate_instance[0].resource_name : resource.ibm_resource_instance.orchestrate_instance[0].resource_name
-  watsonx_orchestrate_plan_id       = var.existing_orchestrate_instance != null ? null : resource.ibm_resource_instance.orchestrate_instance[0].resource_plan_id
-  watsonx_orchestrate_dashboard_url = var.existing_orchestrate_instance != null ? null : resource.ibm_resource_instance.orchestrate_instance[0].dashboard_url
+  watsonx_orchestrate_crn           = var.existing_watsonx_orchestrate_instance_crn != null ? data.ibm_resource_instance.existing_watsonx_orchestrate_instance_crn[0].crn : resource.ibm_resource_instance.orchestrate_instance[0].crn
+  watsonx_orchestrate_guid          = var.existing_watsonx_orchestrate_instance_crn != null ? data.ibm_resource_instance.existing_watsonx_orchestrate_instance_crn[0].guid : resource.ibm_resource_instance.orchestrate_instance[0].guid
+  watsonx_orchestrate_name          = var.existing_watsonx_orchestrate_instance_crn != null ? data.ibm_resource_instance.existing_watsonx_orchestrate_instance_crn[0].resource_name : resource.ibm_resource_instance.orchestrate_instance[0].resource_name
+  watsonx_orchestrate_plan_id       = var.existing_watsonx_orchestrate_instance_crn != null ? null : resource.ibm_resource_instance.orchestrate_instance[0].resource_plan_id
+  watsonx_orchestrate_dashboard_url = var.existing_watsonx_orchestrate_instance_crn != null ? null : resource.ibm_resource_instance.orchestrate_instance[0].dashboard_url
 }
 
-module "resource_group" {
-  source                       = "terraform-ibm-modules/resource-group/ibm"
-  version                      = "1.1.6"
-  resource_group_name          = var.use_existing_resource_group == false ? var.resource_group_name : null
-  existing_resource_group_name = var.use_existing_resource_group == true ? var.resource_group_name : null
-}
-
-data "ibm_resource_instance" "existing_orchestrate_instance" {
-  count      = var.existing_orchestrate_instance != null ? 1 : 0
-  identifier = var.existing_orchestrate_instance
+data "ibm_resource_instance" "existing_watsonx_orchestrate_instance_crn" {
+  count      = var.existing_watsonx_orchestrate_instance_crn != null ? 1 : 0
+  identifier = var.existing_watsonx_orchestrate_instance_crn
 }
 
 resource "ibm_resource_instance" "orchestrate_instance" {
 
-  count             = var.existing_orchestrate_instance != null ? 0 : var.watsonx_orchestrate_plan == "do not install" ? 0 : 1
-  name              = "${var.resource_prefix}-watsonx-orchestrate-instance"
+  count             = var.existing_watsonx_orchestrate_instance_crn != null ? 0 : var.watsonx_orchestrate_plan == "do not install" ? 0 : 1
+  name              = var.watsonx_orchestrate_name
   service           = "watsonx-orchestrate"
   plan              = var.watsonx_orchestrate_plan
-  location          = var.location
-  resource_group_id = module.resource_group.resource_group_id
+  location          = var.region
+  resource_group_id = var.resource_group_id
 
   timeouts {
     create = "15m"
@@ -35,7 +28,7 @@ resource "ibm_resource_instance" "orchestrate_instance" {
 
   lifecycle {
     precondition {
-      condition     = contains(["us-south"], var.location)
+      condition     = contains(["us-south"], var.region)
       error_message = "watsonx Orchestrate is only available in us-south region."
     }
   }
