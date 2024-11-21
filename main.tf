@@ -6,6 +6,11 @@ locals {
   watsonx_orchestrate_dashboard_url = var.existing_watsonx_orchestrate_instance_crn != null ? null : resource.ibm_resource_instance.orchestrate_instance[0].dashboard_url
 }
 
+########################################################################################################################
+# Watsonx Orchestrate Instance
+########################################################################################################################
+
+
 data "ibm_resource_instance" "existing_watsonx_orchestrate_instance_crn" {
   count      = var.existing_watsonx_orchestrate_instance_crn != null ? 1 : 0
   identifier = var.existing_watsonx_orchestrate_instance_crn
@@ -32,4 +37,15 @@ resource "ibm_resource_instance" "orchestrate_instance" {
       error_message = "watsonx Orchestrate is only available in us-south region."
     }
   }
+}
+
+##############################################################################
+# Attach Access Tags
+##############################################################################
+
+resource "ibm_resource_tag" "watsonx_orchestrate_tag" {
+  count       = length(var.access_tags) == 0 && var.existing_watsonx_orchestrate_instance_crn == null ? 0 : 1
+  resource_id = ibm_resource_instance.orchestrate_instance[0].crn
+  tags        = var.access_tags
+  tag_type    = "access"
 }

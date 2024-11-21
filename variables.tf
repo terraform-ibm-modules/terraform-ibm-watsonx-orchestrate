@@ -25,6 +25,10 @@ variable "existing_watsonx_orchestrate_instance_crn" {
   default     = null
   description = "The CRN of the an existing watsonx.orchestrate instance. If no value is passed, and new instance will be provisioned"
   type        = string
+  validation {
+    condition     = var.existing_watsonx_orchestrate_instance_crn == null ? length(var.watsonx_orchestrate_name) > 0 : true
+    error_message = "You must specify a value for 'watsonx_orchestrate_name' if 'existing_watsonx_orchestrate_instance_crn' is null."
+  }
 }
 
 variable "watsonx_orchestrate_plan" {
@@ -37,5 +41,18 @@ variable "watsonx_orchestrate_plan" {
       var.watsonx_orchestrate_plan == "standard",
     ])
     error_message = "You must use a essentials or standard plan."
+  }
+}
+
+variable "access_tags" {
+  type        = list(string)
+  description = "A list of access tags to apply to the Key Protect instance created by the module. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial."
+  default     = []
+
+  validation {
+    condition = alltrue([
+      for tag in var.access_tags : can(regex("[\\w\\-_\\.]+:[\\w\\-_\\.]+", tag)) && length(tag) <= 128
+    ])
+    error_message = "Tags must match the regular expression \"[\\w\\-_\\.]+:[\\w\\-_\\.]+\", see https://cloud.ibm.com/docs/account?topic=account-tag&interface=ui#limits for more details"
   }
 }
