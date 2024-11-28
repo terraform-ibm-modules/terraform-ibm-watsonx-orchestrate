@@ -1,27 +1,10 @@
 ########################################################################################################################
 # Input variables
 ########################################################################################################################
-
-########################################################################################################################
-# Input variables
-########################################################################################################################
-
-variable "resource_group" {
-  type        = string
-  description = "An existing resource group name to use for this example. If not specified, a new resource group is created."
-  default     = null
-}
-
 variable "ibmcloud_api_key" {
   description = "The IBM Cloud API Key"
   sensitive   = true
   type        = string
-}
-
-variable "prefix" {
-  description = "The name to be used on all Watson resources as a prefix."
-  type        = string
-  default     = "watsonx"
 }
 
 variable "existing_watsonx_orchestrate_instance_crn" {

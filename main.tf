@@ -17,13 +17,13 @@ data "ibm_resource_instance" "existing_watsonx_orchestrate_instance_crn" {
 }
 
 resource "ibm_resource_instance" "orchestrate_instance" {
-
-  count             = var.existing_watsonx_orchestrate_instance_crn != null ? 0 : var.watsonx_orchestrate_plan == "do not install" ? 0 : 1
+  count             = var.existing_watsonx_orchestrate_instance_crn != null ? 0 : 1
   name              = var.watsonx_orchestrate_name
   service           = "watsonx-orchestrate"
   plan              = var.watsonx_orchestrate_plan
   location          = var.region
   resource_group_id = var.resource_group_id
+  tags              = var.resource_tags
 
   timeouts {
     create = "15m"
@@ -44,7 +44,7 @@ resource "ibm_resource_instance" "orchestrate_instance" {
 ##############################################################################
 
 resource "ibm_resource_tag" "watsonx_orchestrate_tag" {
-  count       = length(var.access_tags) == 0 && var.existing_watsonx_orchestrate_instance_crn == null ? 0 : 1
+  count       = length(var.access_tags) == 0 ? 0 : 1
   resource_id = ibm_resource_instance.orchestrate_instance[0].crn
   tags        = var.access_tags
   tag_type    = "access"

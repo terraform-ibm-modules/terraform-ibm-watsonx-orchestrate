@@ -4,12 +4,29 @@
 variable "watsonx_orchestrate_name" {
   type        = string
   description = "The name of the watsonx.orchestrate instance."
-  default     = "watsonx-orchestrate"
+  default     = null
+
+  validation {
+    condition     = var.existing_watsonx_orchestrate_instance_crn == null ? length(var.watsonx_orchestrate_name) > 0 : true
+    error_message = "You must specify a value for 'watsonx_data_name' if 'existing_watsonx_orchestrate_instance_crn' is null."
+  }
 }
 
 variable "resource_group_id" {
   description = "The resource group ID where the watsonx data instance is created."
   type        = string
+   default     = null
+
+  validation {
+    condition     = var.existing_watsonx_orchestrate_instance_crn == null ? length(var.resource_group_id) > 0 : true
+    error_message = "You must specify a value for 'resource_group_id' if 'existing_watsonx_orchestrate_instance_crn' is null."
+  }
+}
+
+variable "resource_tags" {
+  type        = list(string)
+  description = "Optional list of tags to be added to created resources"
+  default     = []
 }
 
 variable "region" {
