@@ -1,6 +1,6 @@
 # Basic example
 
-This example provision an instance of the [watsonx Orchestrate](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-Orchestrate)
+This example provision an instance of the [watsonx Orchestrate](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate)
 
 Following resources are provisioned by this example:
 

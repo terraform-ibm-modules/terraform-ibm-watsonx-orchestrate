@@ -66,7 +66,7 @@ variable "existing_watsonx_orchestrate_instance_crn" {
 variable "plan" {
   description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard."
   type        = string
-  default     = "Essentials"
+  default     = "essentials"
   validation {
     condition     = var.existing_watsonx_orchestrate_instance_crn != null || var.plan != null
     error_message = "watsonx Orchestrate plan must be provided when creating a new instance."
@@ -77,15 +77,5 @@ variable "plan" {
       var.plan == "standard",
     ]) || var.existing_watsonx_orchestrate_instance_crn != null
     error_message = "A new watsonx Orchestrate instance requires a 'essentials' or 'standard' plan."
-  }
-}
-
-variable "service_endpoints" {
-  description = "Types of the service endpoints that can be set to a watsonx Orchestrate instance. Possible values are : public, private or public-and-private."
-  type        = string
-  default     = "public-and-private"
-  validation {
-    condition     = contains(["public", "public-and-private", "private"], var.service_endpoints)
-    error_message = "The specified service endpoint is not valid. Supported options are 'public', 'private', 'public-and-private'."
   }
 }

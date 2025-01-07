@@ -15,7 +15,7 @@ repository:
   # By changing this field, you rename the repository.
 
   # Uncomment this name property and set the name to the current repo name.
-  name: "terraform-ibm-watsonx-Orchestrate"
+  name: "terraform-ibm-watsonx-orchestrate"
 
   # The description is displayed under the repository name on the
   # organization page and in the 'About' section of the repository.
@@ -25,4 +25,4 @@ repository:
   # description: "Terraform module to create and work with IBM watsonx Orchestrate."
 
   # Use a comma-separated list of topics to set on the repo (ensure not to use any caps in the topic string).
-  topics: terraform, ibm-cloud, terraform-module, core-team, watsonx-Orchestrate, Orchestrate
+  topics: terraform, ibm-cloud, terraform-module, core-team, watsonx-orchestrate, orchestrate

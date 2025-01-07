@@ -1,4 +1,4 @@
-module github.com/terraform-ibm-modules/terraform-ibm-watsonx-Orchestrate
+module github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate
 
 go 1.22.4
 

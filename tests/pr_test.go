@@ -67,7 +67,7 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 func TestRunBasicExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "wx-Orchestrate", basicExampleDir)
+	options := setupOptions(t, "wx-orchestrate", basicExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -77,7 +77,7 @@ func TestRunBasicExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "wx-Orchestrate-upg", basicExampleDir)
+	options := setupOptions(t, "wx-orchestrate-upg", basicExampleDir)
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {
@@ -90,7 +90,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 	t.Parallel()
 
 	// Provision watsonx Orchestrate instance
-	prefix := fmt.Sprintf("ex-Orchestrate-%s", strings.ToLower(random.UniqueId()))
+	prefix := fmt.Sprintf("ex-orchestrate-%s", strings.ToLower(random.UniqueId()))
 	realTerraformDir := ".."
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueId())))
 	tags := common.GetTagsFromTravis()

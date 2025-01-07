@@ -26,10 +26,9 @@ resource "ibm_resource_instance" "watsonx_orchestrate_instance" {
   resource_group_id = var.resource_group_id
   name              = var.watsonx_orchestrate_name
   location          = var.region
-  service           = "watsonx-Orchestrate"
+  service           = "watsonx-orchestrate"
   plan              = var.plan
   tags              = var.resource_tags
-  service_endpoints = var.service_endpoints
 
   timeouts {
     create = "15m"
