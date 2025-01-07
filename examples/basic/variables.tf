@@ -31,7 +31,7 @@ variable "resource_group" {
 
 variable "access_tags" {
   type        = list(string)
-  description = "Optional list of access management tags to add to the watsonx orchestrate instance."
+  description = "Optional list of access management tags to add to the watsonx Orchestrate instance."
   default     = []
 }
 

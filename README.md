@@ -6,7 +6,7 @@ Update status and "latest release" badges:
   2. Update the "latest release" badge to point to the correct module's repo. Replace "terraform-ibm-module-template" in two places.
 -->
 [![Stable (With quality checks)](https://img.shields.io/badge/Status-Stable%20(With%20quality%20checks)-green)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
-[![latest release](https://img.shields.io/github/v/release/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate?logo=GitHub&sort=semver)](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/releases/latest)
+[![latest release](https://img.shields.io/github/v/release/terraform-ibm-modules/terraform-ibm-watsonx-Orchestrate?logo=GitHub&sort=semver)](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-Orchestrate/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
@@ -18,8 +18,7 @@ Expand on the repo short description in the .github/settings.yml file.
 For information, see "Module names and descriptions" at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=module-names-and-descriptions
 -->
-
-IBM watsonx Orchestrate is a multi-tenant and cloud-native solution that is deployed as a managed software as a service (SaaS) or that you can install on premises.For more information visit [here](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)
+The IBM watsonx Orchestrate Terraform module is designed to automate the deployment and configuration of the IBM watsonx Orchestrate, a multi-tenant and cloud-native solution that is deployed as a managed software as a service (SaaS) or that you can install on premises.For more information visit [here](https://www.ibm.com/docs/en/watsonx/watson-Orchestrate/current)
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
@@ -42,7 +41,7 @@ https://terraform-ibm-modules.github.io/documentation/#/implementation-guideline
 
 
 <!-- Replace this heading with the name of the root level module (the repo name) -->
-## terraform-ibm-watsonx-orchestrate
+## terraform-ibm-watsonx-Orchestrate
 
 ### Usage
 
@@ -59,16 +58,33 @@ provider "ibm" {
   region           = "us-south"
 }
 
-module "watsonx_orchestrator" {
-  source = "terraform-ibm-modules/watsonx-orchestrate/ibm"
+module "watsonx_orchestrate" {
+  source = "terraform-ibm-modules/watsonx-Orchestrate/ibm"
   version           = "X.Y.Z" # Replace "X.Y.Z" with a release version to lock into a specific
   region                = "us-south"
+  watsonx_orchestrate_name = "example-wx-orchestrate"
   watsonx_orchestrate_plan     = "standard"
-  resource_group_id     = "xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX"
+  resource_group_id         = "a8c...8230a" # replace with ID of resource group
 }
 ```
 
-### Required access policies
+### Required IAM access policies
+
+You need the following permissions to run this module:
+
+* Account Management
+  * **Resource Group**
+        - `Viewer` role
+* IAM Services
+  * **watsonx Assistant** service
+        - `Editor` platform access
+
+To attach access management tags to resources in this module, you need the following permissions.
+
+- IAM Services
+    - **Tagging** service
+        - `Administrator` platform access
+
 
 <!-- PERMISSIONS REQUIRED TO RUN MODULE
 If this module requires permissions, uncomment the following block and update
@@ -99,7 +115,6 @@ statement instead the previous block.
 
 <!-- No permissions are needed to run this module.-->
 
-
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ### Requirements
@@ -127,26 +142,26 @@ statement instead the previous block.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_tags"></a> [access\_tags](#input\_access\_tags) | A list of access tags to apply to the watsonx orchestrate instance. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial. | `list(string)` | `[]` | no |
-| <a name="input_existing_watsonx_orchestrate_instance_crn"></a> [existing\_watsonx\_orchestrate\_instance\_crn](#input\_existing\_watsonx\_orchestrate\_instance\_crn) | The CRN of an existing watsonx orchestrate instance.If not provided, a new instance will be provisioned. | `string` | `null` | no |
-| <a name="input_plan"></a> [plan](#input\_plan) | The plan that is required to provision the watsonx orchestrate instance. Possible values are: essentials, standard. | `string` | `"standard"` | no |
-| <a name="input_region"></a> [region](#input\_region) | Region where the watsonx orchestrate instance will be provisioned. Required if creating a new instance. | `string` | `"us-south"` | no |
-| <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The resource group ID where the watsonx orchestrate instance will be grouped. Required when creating a new instance. | `string` | `null` | no |
-| <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Optional list of tags to describe the watsonx orchestrate instance created by the module. | `list(string)` | `[]` | no |
-| <a name="input_service_endpoints"></a> [service\_endpoints](#input\_service\_endpoints) | Types of the service endpoints that can be set to a watsonx orchestrate instance. Possible values are : public, private or public-and-private. | `string` | `"public-and-private"` | no |
-| <a name="input_watsonx_orchestrate_name"></a> [watsonx\_orchestrate\_name](#input\_watsonx\_orchestrate\_name) | The name of the watsonx orchestrate instance. Required if creating a new instance. | `string` | `null` | no |
+| <a name="input_access_tags"></a> [access\_tags](#input\_access\_tags) | A list of access tags to apply to the watsonx Orchestrate instance. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial. | `list(string)` | `[]` | no |
+| <a name="input_existing_watsonx_orchestrate_instance_crn"></a> [existing\_watsonx\_orchestrate\_instance\_crn](#input\_existing\_watsonx\_orchestrate\_instance\_crn) | The CRN of an existing watsonx Orchestrate instance.If not provided, a new instance will be provisioned. | `string` | `null` | no |
+| <a name="input_plan"></a> [plan](#input\_plan) | The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard. | `string` | `"Essentials"` | no |
+| <a name="input_region"></a> [region](#input\_region) | Region where the watsonx Orchestrate instance will be provisioned. Required if creating a new instance. | `string` | `"us-south"` | no |
+| <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The resource group ID where the watsonx Orchestrate instance will be grouped. Required when creating a new instance. | `string` | `null` | no |
+| <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Optional list of tags to describe the watsonx Orchestrate instance created by the module. | `list(string)` | `[]` | no |
+| <a name="input_service_endpoints"></a> [service\_endpoints](#input\_service\_endpoints) | Types of the service endpoints that can be set to a watsonx Orchestrate instance. Possible values are : public, private or public-and-private. | `string` | `"public-and-private"` | no |
+| <a name="input_watsonx_orchestrate_name"></a> [watsonx\_orchestrate\_name](#input\_watsonx\_orchestrate\_name) | The name of the watsonx Orchestrate instance. Required if creating a new instance. | `string` | `null` | no |
 
 ### Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_account_id"></a> [account\_id](#output\_account\_id) | Account ID of the watsonx orchestrate instance. |
-| <a name="output_crn"></a> [crn](#output\_crn) | The CRN of the watsonx orchestrate instance. |
-| <a name="output_dashboard_url"></a> [dashboard\_url](#output\_dashboard\_url) | The dashboard URL of the watsonx orchestrate instance. |
-| <a name="output_guid"></a> [guid](#output\_guid) | The GUID of the watsonx orchestrate instance. |
-| <a name="output_id"></a> [id](#output\_id) | ID of the watsonx orchestrate instance. |
-| <a name="output_name"></a> [name](#output\_name) | The name of the watsonx orchestrate instance. |
-| <a name="output_plan_id"></a> [plan\_id](#output\_plan\_id) | The plan ID of the watsonx orchestrate instance. |
+| <a name="output_account_id"></a> [account\_id](#output\_account\_id) | Account ID of the watsonx Orchestrate instance. |
+| <a name="output_crn"></a> [crn](#output\_crn) | The CRN of the watsonx Orchestrate instance. |
+| <a name="output_dashboard_url"></a> [dashboard\_url](#output\_dashboard\_url) | The dashboard URL of the watsonx Orchestrate instance. |
+| <a name="output_guid"></a> [guid](#output\_guid) | The GUID of the watsonx Orchestrate instance. |
+| <a name="output_id"></a> [id](#output\_id) | ID of the watsonx Orchestrate instance. |
+| <a name="output_name"></a> [name](#output\_name) | The name of the watsonx Orchestrate instance. |
+| <a name="output_plan_id"></a> [plan\_id](#output\_plan\_id) | The plan ID of the watsonx Orchestrate instance. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set-up steps for contributors to follow -->

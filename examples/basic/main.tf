@@ -11,14 +11,14 @@ module "resource_group" {
 }
 
 ########################################################################################################################
-# Watsonx Orchestrator instance
+# Watsonx Orchestrate instance
 ########################################################################################################################
 
 
 module "watsonx_orchestrate" {
   source                   = "../.."
   region                   = var.region
-  watsonx_orchestrate_name = "${var.prefix}-orchestrate-instance"
+  watsonx_orchestrate_name = "${var.prefix}-Orchestrate"
   resource_group_id        = module.resource_group.resource_group_id
   plan                     = "standard"
   resource_tags            = var.resource_tags

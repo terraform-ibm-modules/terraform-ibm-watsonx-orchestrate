@@ -17,8 +17,8 @@ module "resource_group" {
 module "watsonx_orchestrate" {
   source                   = "../../"
   region                   = var.region
-  watsonx_orchestrate_name = "${var.prefix}-wx-orchestrate"
-  plan                     = "standard"
+  watsonx_orchestrate_name = "${var.prefix}-wx-Orchestrate"
+  plan                     = "Essentials"
   resource_group_id        = module.resource_group.resource_group_id
   resource_tags            = var.resource_tags
   access_tags              = var.access_tags

@@ -3,7 +3,7 @@
 ########################################################################################################################
 
 variable "resource_group_id" {
-  description = "The resource group ID where the watsonx orchestrate instance will be grouped. Required when creating a new instance."
+  description = "The resource group ID where the watsonx Orchestrate instance will be grouped. Required when creating a new instance."
   type        = string
   default     = null
   validation {
@@ -13,24 +13,29 @@ variable "resource_group_id" {
 }
 
 variable "region" {
-  default     = "us-south"
-  description = "Region where the watsonx orchestrate instance will be provisioned. Required if creating a new instance."
+  description = "Region where the watsonx Orchestrate instance will be provisioned. Required if creating a new instance."
   type        = string
+  default     = "us-south"
+
   validation {
-    condition     = contains(["us-south"], var.region)
-    error_message = "Region must be specified and set to the permitted value `us-south` when provisioning a new instance."
+    condition = var.existing_watsonx_orchestrate_instance_crn != null || anytrue([
+      var.region == "us-south",
+      var.region == "eu-gb",
+      var.region == "ca-tor"
+    ])
+    error_message = "Region must be specified and set to one of the permitted values ('ca-tor', 'eu-gb', 'us-south') when provisioning a new instance."
   }
 }
 
 variable "resource_tags" {
   type        = list(string)
-  description = "Optional list of tags to describe the watsonx orchestrate instance created by the module."
+  description = "Optional list of tags to describe the watsonx Orchestrate instance created by the module."
   default     = []
 }
 
 variable "access_tags" {
   type        = list(string)
-  description = "A list of access tags to apply to the watsonx orchestrate instance. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial."
+  description = "A list of access tags to apply to the watsonx Orchestrate instance. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial."
   default     = []
 
   validation {
@@ -43,40 +48,40 @@ variable "access_tags" {
 
 variable "watsonx_orchestrate_name" {
   type        = string
-  description = "The name of the watsonx orchestrate instance. Required if creating a new instance."
+  description = "The name of the watsonx Orchestrate instance. Required if creating a new instance."
   default     = null
 
   validation {
     condition     = var.existing_watsonx_orchestrate_instance_crn == null ? length(var.watsonx_orchestrate_name) > 0 : true
-    error_message = "watsonx orchestrate name must be provided when creating a new instance."
+    error_message = "watsonx Orchestrate name must be provided when creating a new instance."
   }
 }
 
 variable "existing_watsonx_orchestrate_instance_crn" {
-  description = "The CRN of an existing watsonx orchestrate instance.If not provided, a new instance will be provisioned."
+  description = "The CRN of an existing watsonx Orchestrate instance.If not provided, a new instance will be provisioned."
   type        = string
   default     = null
 }
 
 variable "plan" {
-  description = "The plan that is required to provision the watsonx orchestrate instance. Possible values are: essentials, standard."
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard."
   type        = string
-  default     = "standard"
+  default     = "Essentials"
   validation {
     condition     = var.existing_watsonx_orchestrate_instance_crn != null || var.plan != null
-    error_message = "watsonx orchestrate plan must be provided when creating a new instance."
+    error_message = "watsonx Orchestrate plan must be provided when creating a new instance."
   }
   validation {
     condition = anytrue([
       var.plan == "essentials",
       var.plan == "standard",
     ]) || var.existing_watsonx_orchestrate_instance_crn != null
-    error_message = "A new watsonx orchestrate instance requires a 'essentials' or 'standard' plan."
+    error_message = "A new watsonx Orchestrate instance requires a 'essentials' or 'standard' plan."
   }
 }
 
 variable "service_endpoints" {
-  description = "Types of the service endpoints that can be set to a watsonx orchestrate instance. Possible values are : public, private or public-and-private."
+  description = "Types of the service endpoints that can be set to a watsonx Orchestrate instance. Possible values are : public, private or public-and-private."
   type        = string
   default     = "public-and-private"
   validation {

@@ -26,7 +26,7 @@ resource "ibm_resource_instance" "watsonx_orchestrate_instance" {
   resource_group_id = var.resource_group_id
   name              = var.watsonx_orchestrate_name
   location          = var.region
-  service           = "watsonx-orchestrate"
+  service           = "watsonx-Orchestrate"
   plan              = var.plan
   tags              = var.resource_tags
   service_endpoints = var.service_endpoints
@@ -35,13 +35,6 @@ resource "ibm_resource_instance" "watsonx_orchestrate_instance" {
     create = "15m"
     update = "15m"
     delete = "15m"
-  }
-
-  lifecycle {
-    precondition {
-      condition     = contains(["us-south"], var.region)
-      error_message = "watsonx Orchestrate is only available in us-south region."
-    }
   }
 }
 
