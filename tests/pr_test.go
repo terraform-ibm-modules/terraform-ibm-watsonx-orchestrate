@@ -36,6 +36,8 @@ var sharedInfoSvc *cloudinfo.CloudInfoService
 // Current supported regions
 var validRegions = []string{
 	"us-south",
+	"eu-gb",
+	"ca-tor",
 }
 
 func TestMain(m *testing.M) {
@@ -67,7 +69,7 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 func TestRunBasicExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "wx-orchestrate", basicExampleDir)
+	options := setupOptions(t, "wx-orchestrate-basic", basicExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -90,7 +92,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 	t.Parallel()
 
 	// Provision watsonx Orchestrate instance
-	prefix := fmt.Sprintf("ex-orchestrate-%s", strings.ToLower(random.UniqueId()))
+	prefix := fmt.Sprintf("wx-orchestrate-%s", strings.ToLower(random.UniqueId()))
 	realTerraformDir := ".."
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueId())))
 	tags := common.GetTagsFromTravis()
