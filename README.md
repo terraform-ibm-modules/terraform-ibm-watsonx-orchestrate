@@ -76,7 +76,7 @@ You need the following permissions to run this module:
   * **Resource Group**
         - `Viewer` role
 * IAM Services
-  * **watsonx Assistant** service
+  * **watsonx Orchestrate** service
         - `Editor` platform access
 
 To attach access management tags to resources in this module, you need the following permissions.
