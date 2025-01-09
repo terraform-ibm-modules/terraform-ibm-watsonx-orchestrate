@@ -69,7 +69,7 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 func TestRunBasicExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "wx-orchestrate-basic", basicExampleDir)
+	options := setupOptions(t, "wx-orchestrate", basicExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
