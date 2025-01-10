@@ -11,16 +11,15 @@ module "resource_group" {
 }
 
 ########################################################################################################################
-# Watsonx Orchestrate instance
+# Watsonx Orchestrate
 ########################################################################################################################
 
-
 module "watsonx_orchestrate" {
-  source                   = "../.."
+  source                   = "../../"
   region                   = var.region
-  watsonx_orchestrate_name = "${var.prefix}-orchestrate"
+  watsonx_orchestrate_name = "${var.prefix}-wx-orchestrate"
+  plan                     = "essentials"
   resource_group_id        = module.resource_group.resource_group_id
-  plan                     = "standard"
   resource_tags            = var.resource_tags
   access_tags              = var.access_tags
 }

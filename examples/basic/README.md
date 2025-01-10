@@ -1,11 +1,8 @@
 # Basic example
 
-<!--
-The basic example should call the module(s) stored in this repository with a basic configuration.
-Note, there is a pre-commit hook that will take the title of each example and include it in the repos main README.md.
-The text below should describe exactly what resources are provisioned / configured by the example.
--->
+This example provision an instance of the [watsonx Orchestrate](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate)
 
-An end-to-end basic example that will provision the following:
-- A new resource group if one is not passed in.
-- A new Cloud Object Storage instance.
+Following resources are provisioned by this example:
+
+- A new resource group if an existing one is not passed in.
+- A newly created watsonx Orchestrate instance.
