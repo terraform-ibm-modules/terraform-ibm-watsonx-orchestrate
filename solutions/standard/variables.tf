@@ -27,28 +27,41 @@ variable "use_existing_resource_group" {
 
 variable "resource_group_name" {
   type        = string
-  description = "The name of a new or an existing resource group to provision the watsonx.ai resources. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
+  description = "The name of a new or an existing resource group to provision the watsonx Orchestrate in. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
 }
 
 variable "prefix" {
   type        = string
-  description = "Prefix to add to all the resources created by this solution."
-  default     = "wx-orch-da"
+  description = "Prefix to add to all resources created by this solution."
+  default     = "wx-orch-da" #TODO: Check the comment by Conall in wx-Assistant for default value
+}
+
+variable "name" {
+  type        = string
+  description = "The name of the watsonx Orchestrate instance. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
+  default     = "dev"
 }
 
 variable "region" {
-  default     = "us-south"
-  description = "Region where the watsonx.ai resources will be provisioned."
+  description = "The region where you want to deploy your instance."
   type        = string
+  default     = "us-south"
+}
 
-  validation {
-    condition     = contains(["eu-de", "us-south", "eu-gb", "jp-tok"], var.region)
-    error_message = "You must specify `eu-de`, `eu-gb`, `jp-tok` or `us-south` as the IBM Cloud region."
-  }
+variable "plan" {
+  type        = string
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard. [Learn more](https://www.ibm.com/products/watsonx-orchestrate/pricing)."
+  default     = "standard"
 }
 
 variable "resource_tags" {
-  description = "Optional list of tags to describe the service instances created by the module."
   type        = list(string)
+  description = "Optional list of tags to describe the newly created watsonx Orchestrate instance."
+  default     = []
+}
+
+variable "access_tags" {
+  type        = list(string)
+  description = "A list of access tags to apply to the watsonx Orchestrate instance. [Learn more](https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial)."
   default     = []
 }

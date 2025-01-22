@@ -169,8 +169,8 @@ func TestRunStandardSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		// "plan":                "standard",
-		// "service_endpoints":   "public",
+		"plan":                "standard",
+		"provider_visibility": "public",
 		"resource_group_name": options.Prefix,
 	}
 
@@ -191,7 +191,8 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		// "plan":                "standard",
+		"plan":                "standard",
+		"provider_visibility": "public",
 		"resource_group_name": options.Prefix,
 	}
 
