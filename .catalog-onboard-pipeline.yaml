@@ -4,7 +4,7 @@ offerings:
   - name: deploy-arch-ibm-watsonx-orchestrate
     kind: solution
     catalog_id: 7df1e4ca-d54c-4fd0-82ce-3d13247308cd
-    offering_id: #TODO: To be added
+    offering_id: 91ae7825-6b75-46f4-a305-c675c95aa3bc
     variations:
       - name: standard
         mark_ready: true
