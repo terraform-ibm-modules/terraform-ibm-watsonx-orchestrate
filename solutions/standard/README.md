@@ -2,8 +2,8 @@
 
 This architecture creates an instance of IBM watsonx Orchestrate and supports provisioning of the following resources:
 
-- A resource group, if one is not passed in.
-- A watsonx Orchestrate instance.
+- A `resource group` , if one is not passed in.
+- A `watsonx Orchestrate` instance.
 
 ![ai-security-guardrails-watsonx-orchestrate](../../reference-architecture/deployable-architecture-watsonx-orchestrate.svg)
 
