@@ -33,7 +33,7 @@ variable "resource_group_name" {
 variable "prefix" {
   type        = string
   description = "Prefix to add to all resources created by this solution."
-  default     = "wx-orch-da" #TODO: Check the comment by Conall in wx-Assistant for default value
+  default     = "wx-orch-da"
 }
 
 variable "name" {
