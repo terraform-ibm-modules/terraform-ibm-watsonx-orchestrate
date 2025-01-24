@@ -33,7 +33,7 @@ resource "ibm_resource_instance" "watsonx_orchestrate_instance" {
   timeouts {
     create = "15m"
     update = "15m"
-    delete = "15m"
+    delete = "30m"
   }
 }
 

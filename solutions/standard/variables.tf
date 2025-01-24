@@ -33,13 +33,13 @@ variable "resource_group_name" {
 variable "prefix" {
   type        = string
   description = "Prefix to add to all resources created by this solution."
-  default     = "wx-orchestrate"
+  default     = "watsonx"
 }
 
 variable "name" {
   type        = string
   description = "The name of the watsonx Orchestrate instance. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
-  default     = "dev"
+  default     = "data"
 }
 
 variable "region" {
