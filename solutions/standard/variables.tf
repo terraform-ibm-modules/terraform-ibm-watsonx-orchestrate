@@ -39,7 +39,7 @@ variable "prefix" {
 variable "name" {
   type        = string
   description = "The name of the watsonx Orchestrate instance. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
-  default     = "data"
+  default     = "orchestrate"
 }
 
 variable "region" {
