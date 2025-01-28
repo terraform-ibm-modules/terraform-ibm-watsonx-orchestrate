@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-watsonx-orchestrate",
-      "label": "watsonx Orchestrate",
+      "label": "Cloud automation for watsonx Orchestrate",
       "product_kind": "solution",
       "tags": [
         "ibm_created",
