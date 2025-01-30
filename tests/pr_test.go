@@ -24,8 +24,8 @@ import (
 
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
-const basicExampleDir = "examples/basic"
 const existingExampleDir = "examples/existing-instance"
+const standardSolutionTerraformDir = "solutions/standard"
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
@@ -38,6 +38,7 @@ var validRegions = []string{
 	"us-south",
 	"eu-gb",
 	"ca-tor",
+	"us-east",
 }
 
 func TestMain(m *testing.M) {
@@ -52,47 +53,11 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.TestOptions {
-	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
-		Testing:       t,
-		TerraformDir:  exampleDir,
-		Prefix:        prefix,
-		ResourceGroup: resourceGroup,
-		TerraformVars: map[string]interface{}{
-			"access_tags": permanentResources["accessTags"],
-			"region":      validRegions[rand.Intn(len(validRegions))],
-		},
-	})
-	return options
-}
-
-func TestRunBasicExample(t *testing.T) {
-	t.Parallel()
-
-	options := setupOptions(t, "wx-orchestrate", basicExampleDir)
-
-	output, err := options.RunTestConsistency()
-	assert.Nil(t, err, "This should not have errored")
-	assert.NotNil(t, output, "Expected some output")
-}
-
-func TestRunUpgradeExample(t *testing.T) {
-	t.Parallel()
-
-	options := setupOptions(t, "wx-orchestrate-upg", basicExampleDir)
-
-	output, err := options.RunTestUpgrade()
-	if !options.UpgradeTestSkipped {
-		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
-	}
-}
-
 func TestRunExistingResourcesExample(t *testing.T) {
 	t.Parallel()
 
 	// Provision watsonx Orchestrate instance
-	prefix := fmt.Sprintf("wx-orchestrate-%s", strings.ToLower(random.UniqueId()))
+	prefix := fmt.Sprintf("ex-wxo-%s", strings.ToLower(random.UniqueId()))
 	realTerraformDir := ".."
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueId())))
 	tags := common.GetTagsFromTravis()
@@ -152,5 +117,51 @@ func TestRunExistingResourcesExample(t *testing.T) {
 		terraform.Destroy(t, existingTerraformOptions)
 		terraform.WorkspaceDelete(t, existingTerraformOptions, prefix)
 		logger.Log(t, "END: Destroy (existing resources)")
+	}
+}
+
+func TestRunStandardSolution(t *testing.T) {
+	t.Parallel()
+
+	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
+		Testing:       t,
+		TerraformDir:  standardSolutionTerraformDir,
+		Region:        validRegions[rand.Intn(len(validRegions))],
+		Prefix:        "wx-da",
+		ResourceGroup: resourceGroup,
+	})
+
+	options.TerraformVars = map[string]interface{}{
+		"plan":                "standard",
+		"provider_visibility": "public",
+		"resource_group_name": options.Prefix,
+	}
+
+	output, err := options.RunTestConsistency()
+	assert.Nil(t, err, "This should not have errored")
+	assert.NotNil(t, output, "Expected some output")
+}
+
+func TestRunStandardUpgradeSolution(t *testing.T) {
+	t.Parallel()
+
+	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
+		Testing:       t,
+		TerraformDir:  standardSolutionTerraformDir,
+		Region:        validRegions[rand.Intn(len(validRegions))],
+		Prefix:        "upg-da-wxo",
+		ResourceGroup: resourceGroup,
+	})
+
+	options.TerraformVars = map[string]interface{}{
+		"plan":                "standard",
+		"provider_visibility": "public",
+		"resource_group_name": options.Prefix,
+	}
+
+	output, err := options.RunTestUpgrade()
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
 	}
 }

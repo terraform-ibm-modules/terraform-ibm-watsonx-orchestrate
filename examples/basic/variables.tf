@@ -11,10 +11,10 @@ variable "ibmcloud_api_key" {
 variable "prefix" {
   type        = string
   description = "Prefix for name of all resource created by this example"
-  default     = "watsonx-ox"
+  default     = "watsonx-orch"
   validation {
-    error_message = "Prefix must begin and end with a letter and contain only letters, numbers, and - characters."
-    condition     = can(regex("^([A-z]|[a-z][-a-z0-9]*[a-z0-9])$", var.prefix))
+    condition     = (var.prefix == null || var.prefix == "") ? true : length(var.prefix) <= 13
+    error_message = "prefix length must be 13 characters or less or null or an empty string (\"\")."
   }
 }
 
