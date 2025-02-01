@@ -38,7 +38,6 @@ var validRegions = []string{
 	"us-south",
 	"eu-gb",
 	"ca-tor",
-	"us-east",
 }
 
 func TestMain(m *testing.M) {
