@@ -24,6 +24,7 @@ import (
 
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
+const basicExampleDir = "examples/basic"
 const existingExampleDir = "examples/existing-instance"
 const standardSolutionTerraformDir = "solutions/standard"
 
@@ -51,6 +52,30 @@ func TestMain(m *testing.M) {
 	}
 
 	os.Exit(m.Run())
+}
+
+func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.TestOptions {
+	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
+		Testing:       t,
+		TerraformDir:  exampleDir,
+		Prefix:        prefix,
+		ResourceGroup: resourceGroup,
+		TerraformVars: map[string]interface{}{
+			"access_tags": permanentResources["accessTags"],
+			"region":      validRegions[rand.Intn(len(validRegions))],
+		},
+	})
+	return options
+}
+
+func TestRunBasicExample(t *testing.T) {
+	t.Parallel()
+
+	options := setupOptions(t, "wx-basic", basicExampleDir)
+
+	output, err := options.RunTestConsistency()
+	assert.Nil(t, err, "This should not have errored")
+	assert.NotNil(t, output, "Expected some output")
 }
 
 func TestRunExistingResourcesExample(t *testing.T) {
