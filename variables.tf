@@ -21,10 +21,9 @@ variable "region" {
     condition = var.existing_watsonx_orchestrate_instance_crn != null || anytrue([
       var.region == "us-south",
       var.region == "eu-gb",
-      var.region == "ca-tor",
-      var.region == "us-east",
+      var.region == "ca-tor"
     ])
-    error_message = "Region must be specified and set to one of the permitted values ('ca-tor', 'eu-gb', 'us-south', 'us-east') when provisioning a new instance."
+    error_message = "Region must be specified and set to one of the permitted values ('ca-tor', 'eu-gb', 'us-south') when provisioning a new instance."
   }
 }
 
