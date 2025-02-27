@@ -99,7 +99,8 @@
               ]
             },
             {
-              "key": "use_existing_resource_group"
+              "key": "use_existing_resource_group",
+              "required": true
             },
             {
               "key": "resource_group_name"
@@ -161,8 +162,9 @@
               "ignore_auto_referencing": ["*"],
               "input_mapping": [
                 {
-                  "dependency_output": "workload_resource_group_name",
-                  "version_input": "resource_group_name"
+                  "dependency_input": "workload_resource_group_name",
+                  "version_input": "resource_group_name",
+                  "reference_version": true
                 },
                 {
                   "value": true,
