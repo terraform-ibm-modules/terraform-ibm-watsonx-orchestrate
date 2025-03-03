@@ -82,36 +82,9 @@
               "type": "password"
             },
             {
-              "key": "provider_visibility",
-              "options": [
-                {
-                  "displayname": "private",
-                  "value": "private"
-                },
-                {
-                  "displayname": "public",
-                  "value": "public"
-                },
-                {
-                  "displayname": "public-and-private",
-                  "value": "public-and-private"
-                }
-              ]
-            },
-            {
-              "key": "use_existing_resource_group",
-              "required": true
-            },
-            {
-              "key": "resource_group_name"
-            },
-            {
               "key": "prefix",
               "required": true,
               "description": "Prefix to add to all resources created by this solution. To not use any prefix value, you can enter the string `__NULL__`."
-            },
-            {
-              "key": "name"
             },
             {
               "key": "region",
@@ -133,6 +106,16 @@
               ]
             },
             {
+              "key": "use_existing_resource_group",
+              "required": true
+            },
+            {
+              "key": "resource_group_name"
+            },
+            {
+              "key": "name"
+            },
+            {
               "key": "plan",
               "default_value": "standard",
               "options": [
@@ -143,6 +126,23 @@
                 {
                   "displayname": "Standard",
                   "value": "standard"
+                }
+              ]
+            },
+            {
+              "key": "provider_visibility",
+              "options": [
+                {
+                  "displayname": "private",
+                  "value": "private"
+                },
+                {
+                  "displayname": "public",
+                  "value": "public"
+                },
+                {
+                  "displayname": "public-and-private",
+                  "value": "public-and-private"
                 }
               ]
             },
@@ -166,13 +166,13 @@
                   "version_input": "resource_group_name"
                 },
                 {
-                  "value": true,
-                  "version_input": "use_existing_resource_group"
-                },
-                {
                   "dependency_input": "prefix",
                   "version_input": "prefix",
                   "reference_version": true
+                },
+                {
+                  "value": true,
+                  "version_input": "use_existing_resource_group"
                 }
               ],
               "optional": true,
