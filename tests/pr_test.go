@@ -161,7 +161,7 @@ func TestRunStandardSolution(t *testing.T) {
 	options.TerraformVars = map[string]interface{}{
 		"plan":                         "standard",
 		"provider_visibility":          "public",
-		"existing_resource_group_name": "Default",
+		"existing_resource_group_name": resourceGroup,
 		"prefix":                       options.Prefix,
 		"region":                       options.Region,
 	}
@@ -185,7 +185,7 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 	options.TerraformVars = map[string]interface{}{
 		"plan":                         "standard",
 		"provider_visibility":          "public",
-		"existing_resource_group_name": "Default",
+		"existing_resource_group_name": resourceGroup,
 		"prefix":                       options.Prefix,
 		"region":                       options.Region,
 	}
