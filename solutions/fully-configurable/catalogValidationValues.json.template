@@ -3,5 +3,5 @@
   "region": "us-south",
   "resource_tags": $TAGS,
   "name": $PREFIX,
-  "resource_group_name": $PREFIX
+  "existing_resource_group_name": $PREFIX
 }

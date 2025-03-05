@@ -159,11 +159,11 @@ func TestRunStandardSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"plan":                "standard",
-		"provider_visibility": "public",
-		"resource_group_name": options.Prefix,
-		"prefix":              options.Prefix,
-		"region":              options.Region,
+		"plan":                         "standard",
+		"provider_visibility":          "public",
+		"existing_resource_group_name": "Default",
+		"prefix":                       options.Prefix,
+		"region":                       options.Region,
 	}
 
 	output, err := options.RunTestConsistency()
@@ -183,11 +183,11 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"plan":                "standard",
-		"provider_visibility": "public",
-		"resource_group_name": options.Prefix,
-		"prefix":              options.Prefix,
-		"region":              options.Region,
+		"plan":                         "standard",
+		"provider_visibility":          "public",
+		"existing_resource_group_name": "Default",
+		"prefix":                       options.Prefix,
+		"region":                       options.Region,
 	}
 
 	output, err := options.RunTestUpgrade()
