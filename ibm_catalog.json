@@ -84,7 +84,7 @@
             {
               "key": "prefix",
               "required": true,
-              "description": "Prefix to add to all resources created by this solution. To not use any prefix value, you can enter the string `__NULL__`."
+              "description": "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To not use any prefix value, you can enter the string `__NULL__`."
             },
             {
               "key": "region",
@@ -106,11 +106,16 @@
               ]
             },
             {
-              "key": "use_existing_resource_group",
-              "required": true
-            },
-            {
-              "key": "resource_group_name"
+              "key": "existing_resource_group_name",
+              "required": true,
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
             },
             {
               "key": "name"
@@ -163,16 +168,12 @@
               "input_mapping": [
                 {
                   "dependency_output": "workload_resource_group_name",
-                  "version_input": "resource_group_name"
+                  "version_input": "existing_resource_group_name"
                 },
                 {
                   "dependency_input": "prefix",
                   "version_input": "prefix",
                   "reference_version": true
-                },
-                {
-                  "value": true,
-                  "version_input": "use_existing_resource_group"
                 }
               ],
               "optional": true,
