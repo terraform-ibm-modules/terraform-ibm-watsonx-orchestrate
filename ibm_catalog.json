@@ -77,14 +77,12 @@
           },
           "configuration": [
             {
-              "key": "ibmcloud_api_key",
-              "required": true,
-              "type": "password"
+              "key": "ibmcloud_api_key"
             },
             {
               "key": "prefix",
               "required": true,
-              "description": "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To not use any prefix value, you can enter the string `__NULL__`."
+              "description": "Prefix to add to all resources that this solution creates. To not use any prefix value, you can enter the string `__NULL__`."
             },
             {
               "key": "region",
@@ -118,23 +116,6 @@
               }
             },
             {
-              "key": "name"
-            },
-            {
-              "key": "plan",
-              "default_value": "standard",
-              "options": [
-                {
-                  "displayname": "Essentials",
-                  "value": "essentials"
-                },
-                {
-                  "displayname": "Standard",
-                  "value": "standard"
-                }
-              ]
-            },
-            {
               "key": "provider_visibility",
               "options": [
                 {
@@ -152,10 +133,41 @@
               ]
             },
             {
-              "key": "resource_tags"
+              "key": "watsonx_orchestrate_instance_name"
             },
             {
-              "key": "access_tags"
+              "key": "watsonx_orchestrate_plan",
+              "default_value": "standard",
+              "options": [
+                {
+                  "displayname": "Essentials",
+                  "value": "essentials"
+                },
+                {
+                  "displayname": "Standard",
+                  "value": "standard"
+                }
+              ]
+            },
+            {
+              "key": "resource_tags",
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "access_tags",
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
             }
           ],
           "dependencies": [
