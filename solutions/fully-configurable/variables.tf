@@ -30,7 +30,7 @@ variable "prefix" {
   description = "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To not use any prefix value, you can set this value to `null` or an empty string."
 }
 
-variable "name" {
+variable "watsonx_orchestrate_instance_name" {
   type        = string
   description = "The name of the watsonx Orchestrate instance. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
   default     = "orchestrate"
@@ -42,10 +42,10 @@ variable "region" {
   default     = "us-south"
 }
 
-variable "plan" {
+variable "service_plan" {
   type        = string
   description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard. [Learn more](https://www.ibm.com/products/watsonx-orchestrate/pricing)."
-  default     = "standard"
+  default     = "essentials"
 }
 
 variable "resource_tags" {
