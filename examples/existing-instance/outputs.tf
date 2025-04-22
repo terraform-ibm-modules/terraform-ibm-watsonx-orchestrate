@@ -26,3 +26,8 @@ output "guid" {
   description = "GUID of the existing watsonx Orchestrate instance"
   value       = module.existing_watsonx_orchestrate_instance.guid
 }
+
+output "dashboard_url" {
+  description = "The dashboard URL of the watsonx Orchestrate instance."
+  value       = module.existing_watsonx_orchestrate_instance.dashboard_url
+}
