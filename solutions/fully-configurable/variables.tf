@@ -45,8 +45,8 @@ variable "region" {
 
 variable "service_plan" {
   type        = string
-  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard. [Learn more](https://www.ibm.com/products/watsonx-orchestrate/pricing)."
-  default     = "essentials"
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: trial, essentials, standard. [Learn more](https://www.ibm.com/products/watsonx-orchestrate/pricing)."
+  default     = "trial"
 }
 
 variable "resource_tags" {
