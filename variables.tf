@@ -67,7 +67,7 @@ variable "existing_watsonx_orchestrate_instance_crn" {
 }
 
 variable "plan" {
-  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard."
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: trial, essentials, standard."
   type        = string
   default     = "trial"
   validation {
