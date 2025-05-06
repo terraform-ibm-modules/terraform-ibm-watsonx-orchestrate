@@ -99,6 +99,18 @@
                 {
                   "displayname": "London (eu-gb)",
                   "value": "eu-gb"
+                },
+                {
+                  "displayname": "Frankfurt (eu-de)",
+                  "value": "eu-de"
+                },
+                {
+                  "displayname": "Sydney (au-syd)",
+                  "value": "au-syd"
+                },
+                {
+                  "displayname": "Tokyo (jp-tok)",
+                  "value": "jp-tok"
                 }
               ]
             },
@@ -138,6 +150,10 @@
               "key": "service_plan",
               "default_value": "standard",
               "options": [
+                {
+                  "displayname": "Trial",
+                  "value": "trial"
+                },
                 {
                   "displayname": "Essentials",
                   "value": "essentials"
