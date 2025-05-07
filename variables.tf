@@ -67,19 +67,19 @@ variable "existing_watsonx_orchestrate_instance_crn" {
 }
 
 variable "plan" {
-  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: trial, essentials, standard."
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials, standard."
   type        = string
-  default     = "trial"
+  default     = "lite"
   validation {
     condition     = var.existing_watsonx_orchestrate_instance_crn != null || var.plan != null
     error_message = "watsonx Orchestrate plan must be provided when creating a new instance."
   }
   validation {
     condition = anytrue([
-      var.plan == "trial",
+      var.plan == "lite",
       var.plan == "essentials",
       var.plan == "standard",
     ]) || var.existing_watsonx_orchestrate_instance_crn != null
-    error_message = "A new watsonx Orchestrate instance requires a 'trial', 'essentials' or 'standard' plan."
+    error_message = "A new watsonx Orchestrate instance requires a 'lite', 'essentials' or 'standard' plan."
   }
 }
