@@ -151,8 +151,8 @@
               "default_value": "standard",
               "options": [
                 {
-                  "displayname": "Trial",
-                  "value": "trial"
+                  "displayname": "Lite",
+                  "value": "lite"
                 },
                 {
                   "displayname": "Essentials",
