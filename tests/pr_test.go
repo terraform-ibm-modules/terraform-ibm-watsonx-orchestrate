@@ -104,6 +104,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 		Vars: map[string]interface{}{
 			"prefix":        prefix,
 			"resource_tags": tags,
+			"plan":          "essentials",
 			"access_tags":   permanentResources["accessTags"],
 			"region":        validRegions[rand.Intn(len(validRegions))],
 		},
