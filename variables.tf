@@ -76,7 +76,7 @@ variable "plan" {
   }
   validation {
     condition = anytrue([
-      var.plan == "lite",
+      var.plan == "lite", # This refers to the Trial plan.
       var.plan == "essentials",
       var.plan == "standard",
     ]) || var.existing_watsonx_orchestrate_instance_crn != null

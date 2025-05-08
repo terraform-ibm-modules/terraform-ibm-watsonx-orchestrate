@@ -148,10 +148,9 @@
             },
             {
               "key": "service_plan",
-              "default_value": "standard",
               "options": [
                 {
-                  "displayname": "Lite",
+                  "displayname": "Trial",
                   "value": "lite"
                 },
                 {
