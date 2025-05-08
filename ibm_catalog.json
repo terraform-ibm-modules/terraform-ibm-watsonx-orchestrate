@@ -86,7 +86,6 @@
             {
               "key": "region",
               "required": true,
-              "default_value": "us-south",
               "options": [
                 {
                   "displayname": "Dallas (us-south)",
