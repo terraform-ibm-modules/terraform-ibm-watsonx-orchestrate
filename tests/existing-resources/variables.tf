@@ -24,6 +24,12 @@ variable "region" {
   default     = "us-south"
 }
 
+variable "plan" {
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials, standard."
+  type        = string
+  default     = "lite"
+}
+
 variable "resource_group" {
   type        = string
   description = "The name of an existing resource group to provision resources into. If not set a new resource group will be created using the prefix variable."

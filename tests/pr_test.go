@@ -37,8 +37,11 @@ var sharedInfoSvc *cloudinfo.CloudInfoService
 // Current supported regions
 var validRegions = []string{
 	"us-south",
-	"eu-gb",
 	"ca-tor",
+	"eu-gb",
+	"eu-de",
+	"au-syd",
+	"jp-tok",
 }
 
 func TestMain(m *testing.M) {
@@ -101,6 +104,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 		Vars: map[string]interface{}{
 			"prefix":        prefix,
 			"resource_tags": tags,
+			"plan":          "essentials",
 			"access_tags":   permanentResources["accessTags"],
 			"region":        validRegions[rand.Intn(len(validRegions))],
 		},
@@ -183,7 +187,7 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"service_plan":                 "essentials",
+		"service_plan":                 "lite",
 		"provider_visibility":          "public",
 		"existing_resource_group_name": resourceGroup,
 		"prefix":                       options.Prefix,

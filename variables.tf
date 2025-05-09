@@ -20,10 +20,13 @@ variable "region" {
   validation {
     condition = var.existing_watsonx_orchestrate_instance_crn != null || anytrue([
       var.region == "us-south",
+      var.region == "ca-tor",
       var.region == "eu-gb",
-      var.region == "ca-tor"
+      var.region == "eu-de",
+      var.region == "au-syd",
+      var.region == "jp-tok"
     ])
-    error_message = "Region must be specified and set to one of the permitted values ('ca-tor', 'eu-gb', 'us-south') when provisioning a new instance."
+    error_message = "Region must be specified and set to one of the permitted values ('us-south', 'ca-tor', 'eu-gb', 'eu-de', 'au-syd', 'jp-tok') when provisioning a new instance."
   }
 }
 
@@ -64,18 +67,19 @@ variable "existing_watsonx_orchestrate_instance_crn" {
 }
 
 variable "plan" {
-  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: essentials, standard."
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials, standard."
   type        = string
-  default     = "essentials"
+  default     = "lite"
   validation {
     condition     = var.existing_watsonx_orchestrate_instance_crn != null || var.plan != null
     error_message = "watsonx Orchestrate plan must be provided when creating a new instance."
   }
   validation {
     condition = anytrue([
+      var.plan == "lite", # This refers to the Trial plan.
       var.plan == "essentials",
       var.plan == "standard",
     ]) || var.existing_watsonx_orchestrate_instance_crn != null
-    error_message = "A new watsonx Orchestrate instance requires a 'essentials' or 'standard' plan."
+    error_message = "A new watsonx Orchestrate instance requires a 'lite', 'essentials' or 'standard' plan."
   }
 }
