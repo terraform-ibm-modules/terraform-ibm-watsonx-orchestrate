@@ -3,5 +3,6 @@
   "region": "us-south",
   "resource_tags": $TAGS,
   "watsonx_orchestrate_instance_name": $PREFIX,
-  "existing_resource_group_name": "geretain-test-resources"
+  "existing_resource_group_name": "geretain-test-resources",
+  "prefix": $PREFIX
 }
