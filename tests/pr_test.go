@@ -69,7 +69,6 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 		"prefix":         options.Prefix,
 		"resource_group": resourceGroup,
 		"resource_tags":  options.Tags,
-		"plan":           "essentials",
 	}
 	return options
 }
