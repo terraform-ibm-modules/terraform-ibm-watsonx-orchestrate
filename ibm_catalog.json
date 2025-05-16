@@ -54,7 +54,7 @@
             },
             {
               "role_crns": ["crn:v1:bluemix:public:iam::::role:Editor"],
-              "service_name": "lakehouse",
+              "service_name": "watsonx-orchestrate",
               "notes": "Required for creating a new instance of watsonx Orchestrate"
             }
           ],
