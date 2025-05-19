@@ -27,7 +27,7 @@ variable "region" {
 variable "plan" {
   description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials, standard."
   type        = string
-  default     = "lite"
+  default     = "essentials"
 }
 
 variable "resource_group" {
