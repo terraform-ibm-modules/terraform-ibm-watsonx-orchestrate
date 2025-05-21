@@ -21,7 +21,7 @@
         "ai"
       ],
       "short_description": "Creates and configures an instance of IBM watsonx Orchestrate.",
-      "long_description": "This architecture supports creating and configuring an instance of watsonx Orchestrate. For more details on watsonx Orchestrate, [see here](https://www.ibm.com/docs/en/watson-orchestrate).",
+      "long_description": "IBM® watsonx™ Orchestrate® puts AI to work—helping you build, deploy and manage powerful AI assistants and agents that automate workflows and processes with generative AI. Seamlessly integrate with your existing business systems. Connect to any AI model or automation tool. A single solution to orchestrate AI agents, assistants and workflows across your business. The outcome? Less manual work. Faster decisions. A more efficient business—at scale.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/images/watsonx-orchestrate.svg",
       "provider_name": "IBM",
@@ -60,7 +60,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "all-account-management-services",
-              "notes": "[optional] Required when setting up foundational IBM Cloud account components such as IAM settings, trusted profiles, access groups, and resource groups."
+              "notes": "[Optional] Required when setting up foundational IBM Cloud account components such as IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
               "role_crns": [
@@ -139,22 +139,7 @@
               }
             },
             {
-              "key": "provider_visibility",
-              "options": [
-                {
-                  "displayname": "private",
-                  "value": "private"
-                },
-                {
-                  "displayname": "public",
-                  "value": "public"
-                },
-                {
-                  "displayname": "public-and-private",
-                  "value": "public-and-private"
-                }
-              ],
-              "hidden": true
+              "key": "provider_visibility"
             },
             {
               "key": "watsonx_orchestrate_instance_name"
@@ -200,12 +185,13 @@
           "dependencies": [
             {
               "name": "deploy-arch-ibm-account-infra-base",
-              "description": "This module prepares the IBM Cloud account with the necessary configurations to ensure a secure and organized environment for the watsonx Orchestrate architecture.",
+              "description": "Cloud automation for Account Configuration organizes your IBM Cloud account with a ready-made set of resource groups by default—and, when you enable the \"with Account Settings\" option, it also applies baseline security and governance settings.",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
                 "resource-group-only",
                 "resource-groups-with-account-settings"
               ],
+              "default_flavor": "resource-group-only",
               "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
               "input_mapping": [
                 {
@@ -225,21 +211,17 @@
                   "dependency_input": "prefix",
                   "version_input": "prefix",
                   "reference_version": true
-                },
-                {
-                  "version_input": "use_existing_resource_group",
-                  "value": true
                 }
               ],
               "optional": true,
-              "on_by_default": true,
-              "version": "v2.2.3"
+              "on_by_default": false,
+              "version": "v3.0.7"
             },
             {
               "name": "testing-deploy-arch-ibm-observability",
               "description": "Cloud Automation for Observability supports configuring IBM Cloud Observability resources for logging, monitoring and activity tracking.",
               "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
-              "version": "v1.5.0",
+              "version": "v3.0.3",
               "flavors": [
                 "standard"
               ],
