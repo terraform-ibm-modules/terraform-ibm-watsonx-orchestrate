@@ -37,6 +37,10 @@
         {
           "title": "Agent catalog",
           "description": "Customize watsonx Orchestrate to handle the work unique to you, when and where you need the help."
+        },
+        {
+          "title": "Optional integrations",
+          "description": "- **Cloud Automation for Account Configuration** <br/> - **Cloud Automation for Observability** <br/>"
         }
       ],
       "flavors": [
