@@ -138,10 +138,12 @@
               "key": "provider_visibility"
             },
             {
-              "key": "watsonx_orchestrate_instance_name"
+              "key": "watsonx_orchestrate_instance_name",
+              "required": true
             },
             {
               "key": "service_plan",
+              "required": true,
               "options": [
                 {
                   "displayname": "Trial",
