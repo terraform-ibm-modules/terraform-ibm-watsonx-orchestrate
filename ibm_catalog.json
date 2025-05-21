@@ -21,18 +21,18 @@
         "ai"
       ],
       "short_description": "Creates and configures an instance of IBM watsonx Orchestrate.",
-      "long_description": "IBM® watsonx™ Orchestrate® puts AI to work—helping you build, deploy and manage powerful AI assistants and agents that automate workflows and processes with generative AI. This solution/ DA ccreates and ..... [Learn More]()",
+      "long_description": "IBM® watsonx™ Orchestrate® puts AI to work—helping you build, deploy and manage powerful AI assistants and agents that automate workflows and processes with generative AI. This Deployable Architecture creates and configures an instance of IBM watsonx Orchestrate. [Learn More](https://www.ibm.com/products/watsonx-orchestrate)",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/images/watsonx-orchestrate.svg",
       "provider_name": "IBM",
       "features": [
         {
-          "title": "Configure wxO instance",
-          "description": "Orchestrate a team of AI agents that work together. Turn complexity into clarity and streamline workflows with AI-driven collaboration."
+          "title": "Creates a watsonx Orchestrate instance",
+          "description": "[Refer here](https://www.ibm.com/products/watsonx-orchestrate) for more details on watsonx Orchestrate."
         },
         {
           "title": "Optional Integrations",
-          "description": "This can be integrated with Observability(link to tile) setup for desciption of observa" 
+          "description": "This solution can be integrated with [IBM Cloud Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring and activity tracking."
         }
       ],
       "flavors": [
@@ -55,7 +55,7 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "All Account Management Services",
+              "service_name": "All Account Management services",
               "notes": "[Optional] Required when setting up foundational IBM Cloud account components such as IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
@@ -69,8 +69,8 @@
           "architecture": {
             "features": [
               {
-                "title": " Creates and configures an instance of watsonx Orchestrate",
-                "description": "This architecture creates and configures an instance of IBM watsonx Orchestrate. It accepts or creates a resource group."
+                "title": "watsonx Orchestrate instance",
+                "description": "This architecture creates and configures an instance of IBM watsonx Orchestrate."
               }
             ],
             "diagrams": [
@@ -80,7 +80,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/reference-architecture/deployable-architecture-watsonx-orchestrate.svg",
                   "type": "image/svg+xml"
                 },
-                "description": ""
+                "description": "**watsonx Orchestrate** <br/> <br/><b>Description</b> <br/> Create a watsonx Orchestrate instance on IBM Cloud. Optional services used are:<br/> - Account Configuration <br/> - Observability. <br/><br/> **Observability**: <br/> This architecture supports creating and configuring the foundational components of an IBM Cloud account. This includes IAM account settings, a trusted profile and associated access groups, and the resource groups in which all resources are provisioned. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-account-infrastructure-base/tree/main/docs/about.md)<br/><br/> **Observability**: <br/> This architecture supports configuring IBM Cloud Observability resources for logging, monitoring, and activity tracking.<br/>"
               }
             ]
           },
