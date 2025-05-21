@@ -40,7 +40,7 @@
         },
         {
           "title": "Optional integrations",
-          "description": "1) Cloud Automation for Account Configuration 2) Cloud Automation for Observability"
+          "description": "1. Cloud Automation for Account Configuration <br/> <br/> 2. Cloud Automation for Observability"
         }
       ],
       "flavors": [
