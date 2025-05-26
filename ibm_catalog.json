@@ -231,7 +231,7 @@
             {
               "name": "deploy-arch-ibm-observability",
               "description": "Cloud Automation for Observability supports configuring IBM Cloud Observability resources for logging, monitoring and activity tracker event routing.",
-              "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
+              "id": "a3137d28-79e0-479d-8a24-758ebd5a0eab-global",
               "version": "v3.0.3",
               "flavors": [
                 "standard"
