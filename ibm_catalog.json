@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-watsonx-orchestrate",
-      "label": "[Add-ons Beta] Cloud automation for watsonx Orchestrate",
+      "label": "Cloud automation for watsonx Orchestrate",
       "product_kind": "solution",
       "tags": [
         "ibm_created",
@@ -21,16 +21,21 @@
         "ai"
       ],
       "short_description": "Creates and configures an instance of IBM watsonx Orchestrate.",
-      "long_description": "This architecture supports creating and configuring an instance of watsonx Orchestrate.",
+      "long_description": "IBM watsonx Orchestrate puts AI to work—helping you build, deploy and manage powerful AI assistants and agents that automate workflows and processes with generative AI. This deployable architecture creates and configures an instance of IBM watsonx Orchestrate. For detailed information on IBM watsonx Orchestrate, please refer this [documentation](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current?topic=getting-started-watsonx-orchestrate).",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/images/watsonx-orchestrate.svg",
       "provider_name": "IBM",
       "features": [
         {
-          "title": "Creates an instance of IBM watsonx Orchestrate",
-          "description": "Creates and configures an IBM watsonx Orchestrate instance."
+          "title": "watsonx Orchestrate instance",
+          "description": "Provision and configure an instance of IBM watsonx Orchestrate. Explore more about IBM watsonx Orchestrate [here](https://www.ibm.com/products/watsonx-orchestrate)."
+        },
+        {
+          "title": "Optional Integrations",
+          "description": "This solution can be integrated with [IBM Cloud Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring and activity tracker event routing."
         }
       ],
+      "support_details": "This product is in the community registry, as such support is handled through the originated repository. If you experience issues please open an issue in the repository [here](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/issues). Please note this product is not supported via the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Fully configurable",
@@ -51,20 +56,22 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "all-account-management-services"
+              "service_name": "All Account Management services",
+              "notes": "[Optional] Required when setting up foundational IBM Cloud account components such as IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "watsonx-orchestrate"
+              "service_name": "watsonx-orchestrate",
+              "notes": "Required for creating a new instance of watsonx Orchestrate."
             }
           ],
           "architecture": {
             "features": [
               {
-                "title": " Creates and configures an instance of watsonx Orchestrate",
-                "description": "This architecture creates and configures an instance of IBM watsonx Orchestrate. It accepts or creates a resource group."
+                "title": "watsonx Orchestrate instance",
+                "description": "This architecture creates and configures an instance of IBM watsonx Orchestrate."
               }
             ],
             "diagrams": [
@@ -74,7 +81,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/reference-architecture/deployable-architecture-watsonx-orchestrate.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture supports creating and configuring an instance of watsonx Orchestrate."
+                "description": "This solution provisions a `watsonx Orchestrate` instance on IBM Cloud. Once the instance is successfully created, you will receive a dashboard link that provides direct access to your watsonx Orchestrate environment. Optionally, you may also configure IBM Cloud Observability resources—such as logging, monitoring, and activity tracker event routing—to enhance visibility and operational insights."
               }
             ]
           },
@@ -118,7 +125,7 @@
             },
             {
               "key": "existing_resource_group_name",
-              "required": true,
+              "display_name": "resource_group",
               "custom_config": {
                 "type": "resource_group",
                 "grouping": "deployment",
@@ -130,20 +137,7 @@
             },
             {
               "key": "provider_visibility",
-              "options": [
-                {
-                  "displayname": "private",
-                  "value": "private"
-                },
-                {
-                  "displayname": "public",
-                  "value": "public"
-                },
-                {
-                  "displayname": "public-and-private",
-                  "value": "public-and-private"
-                }
-              ]
+              "hidden": true
             },
             {
               "key": "watsonx_orchestrate_instance_name"
@@ -189,19 +183,18 @@
           "dependencies": [
             {
               "name": "deploy-arch-ibm-account-infra-base",
+              "description": "Cloud automation for Account Configuration organizes your IBM Cloud account with a ready-made set of resource groups by default—and, when you enable the \"with Account Settings\" option, it also applies baseline security and governance settings.",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
-                "resource-group-only"
+                "resource-group-only",
+                "resource-groups-with-account-settings"
               ],
+              "default_flavor": "resource-group-only",
               "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
               "input_mapping": [
                 {
-                  "dependency_output": "global_resource_group_name",
+                  "dependency_output": "workload_resource_group_name",
                   "version_input": "existing_resource_group_name"
-                },
-                {
-                  "dependency_input": "global_resource_group_name",
-                  "value": "workload-rg"
                 },
                 {
                   "dependency_input": "provider_visibility",
@@ -215,15 +208,16 @@
                 }
               ],
               "optional": true,
-              "on_by_default": true,
-              "version": "^v2.0.6"
+              "on_by_default": false,
+              "version": "v3.0.7"
             },
             {
-              "name": "testing-deploy-arch-ibm-observability",
-              "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
-              "version": "^1.3.0",
+              "name": "deploy-arch-ibm-observability",
+              "description": "Enables provisioning and configuration of IBM Cloud Logs, Cloud Monitoring, Logs routing, and Activity Tracker event routing to analyze logs generated by the watsonx Orchestrate instance",
+              "id": "a3137d28-79e0-479d-8a24-758ebd5a0eab-global",
+              "version": "v3.0.3",
               "flavors": [
-                "standard"
+                "instances"
               ],
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "optional": true,
@@ -242,7 +236,8 @@
               ]
             }
           ],
-          "dependency_version_2": true
+          "dependency_version_2": true,
+          "terraform_version": "1.10.5"
         }
       ]
     }

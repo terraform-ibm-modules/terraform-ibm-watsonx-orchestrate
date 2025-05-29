@@ -182,7 +182,7 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 		Testing:       t,
 		TerraformDir:  standardSolutionTerraformDir,
 		Region:        validRegions[rand.Intn(len(validRegions))],
-		Prefix:        "wxo-da-upg",
+		Prefix:        "wxo-upg",
 		ResourceGroup: resourceGroup,
 	})
 
