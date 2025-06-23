@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   call-terraform-release-pipeline:
     uses: terraform-ibm-modules/common-pipeline-assets/.github/workflows/common-release.yml@v1.22.5
