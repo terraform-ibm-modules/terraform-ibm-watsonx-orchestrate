@@ -21,7 +21,7 @@ variable "provider_visibility" {
 
 variable "existing_resource_group_name" {
   type        = string
-  description = "The name of an existing resource group in which the watsonx.orchestrate instance will be provisioned."
+  description = "The name of an existing resource group in which the watsonx Orchestrate instance will be provisioned."
   default     = "Default"
   nullable    = false
 }
@@ -31,6 +31,11 @@ variable "prefix" {
   description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and can not contain consecutive hyphens ('--'). Example: prod-0205-orc. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/da-implementation-guidelines.md)."
 
   validation {
+    # - null and empty string is allowed
+    # - Must not contain consecutive hyphens (--): length(regexall("--", var.prefix)) == 0
+    # - Starts with a lowercase letter: [a-z]
+    # - Contains only lowercase letters (a–z), digits (0–9), and hyphens (-)
+    # - Must not end with a hyphen (-): [a-z0-9]
     condition = (var.prefix == null || var.prefix == "" ? true :
       alltrue([
         can(regex("^[a-z][-a-z0-9]*[a-z0-9]$", var.prefix)),
@@ -40,6 +45,7 @@ variable "prefix" {
     error_message = "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--')."
   }
   validation {
+    # must not exceed 16 characters in length
     condition     = length(var.prefix) <= 16
     error_message = "Prefix must not exceed 16 characters."
   }
