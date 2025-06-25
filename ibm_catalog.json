@@ -103,8 +103,8 @@
           "architecture": {
             "features": [
               {
-                "title": "watsonx Orchestrate instance",
-                "description": "This architecture creates and configures an instance of IBM watsonx Orchestrate."
+                "title": " ",
+                "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
               }
             ],
             "diagrams": [
