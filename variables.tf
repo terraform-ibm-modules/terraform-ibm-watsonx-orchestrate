@@ -79,7 +79,7 @@ variable "plan" {
       var.plan == "lite", # This refers to the Trial plan.
       var.plan == "essentials-agentic-mau",
       var.plan == "standard-agentic-mau",
-      var.plan == "premium-agentic-mau",
+      var.plan == "premium-agentic-mau"
     ]) || var.existing_watsonx_orchestrate_instance_crn != null
     error_message = "A new watsonx Orchestrate instance requires a 'lite', 'essentials-agentic-mau', 'standard-agentic-mau' or 'premium-agentic-mau' plan."
   }
