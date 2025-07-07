@@ -163,15 +163,15 @@
                   "value": "lite"
                 },
                 {
-                  "displayname": "Essentials",
+                  "displayname": "Essentials Agentic with Monthly Active Users",
                   "value": "essentials-agentic-mau"
                 },
                 {
-                  "displayname": "Standard",
+                  "displayname": "Standard Agentic with Monthly Active Users",
                   "value": "standard-agentic-mau"
                 },
                 {
-                  "displayname": "Premium",
+                  "displayname": "Premium Agentic with Monthly Active Users",
                   "value": "premium-agentic-mau"
                 }
               ]
