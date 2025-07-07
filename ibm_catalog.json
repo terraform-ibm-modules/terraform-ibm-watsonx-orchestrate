@@ -164,11 +164,15 @@
                 },
                 {
                   "displayname": "Essentials",
-                  "value": "essentials"
+                  "value": "essentials-agentic-mau"
                 },
                 {
                   "displayname": "Standard",
-                  "value": "standard"
+                  "value": "standard-agentic-mau"
+                },
+                {
+                  "displayname": "Premium",
+                  "value": "premium-agentic-mau"
                 }
               ]
             },
