@@ -63,7 +63,7 @@ module "watsonx_orchestrate" {
   version           = "X.Y.Z" # Replace "X.Y.Z" with a release version to lock into a specific
   region                = "us-south"
   watsonx_orchestrate_name = "example-wx-orchestrate"
-  watsonx_orchestrate_plan     = "standard"
+  watsonx_orchestrate_plan     = "standard-agentic-mau"
   resource_group_id         = "a8c...8230a" # replace with ID of resource group
 }
 ```
