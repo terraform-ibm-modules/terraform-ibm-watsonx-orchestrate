@@ -59,7 +59,7 @@ variable "region" {
 
 variable "service_plan" {
   type        = string
-  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials-agentic-mau, standard-agentic-mau and premium-agentic-mau. [Learn more](https://cloud.ibm.com/catalog/services/watsonx-orchestrate)."
+  description = "The plan that is required to provision the watsonx Orchestrate instance. [Learn more](https://cloud.ibm.com/catalog/services/watsonx-orchestrate)."
   default     = "essentials-agentic-mau"
 }
 
