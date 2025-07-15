@@ -104,7 +104,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 		Vars: map[string]interface{}{
 			"prefix":        prefix,
 			"resource_tags": tags,
-			"plan":          "essentials",
+			"plan":          "essentials-agentic-mau",
 			"access_tags":   permanentResources["accessTags"],
 			"region":        validRegions[rand.Intn(len(validRegions))],
 		},
@@ -163,7 +163,7 @@ func TestRunStandardSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"service_plan":                 "essentials",
+		"service_plan":                 "essentials-agentic-mau",
 		"provider_visibility":          "public",
 		"existing_resource_group_name": resourceGroup,
 		"prefix":                       options.Prefix,
@@ -187,7 +187,7 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"service_plan":                 "essentials",
+		"service_plan":                 "essentials-agentic-mau",
 		"provider_visibility":          "public",
 		"existing_resource_group_name": resourceGroup,
 		"prefix":                       options.Prefix,
