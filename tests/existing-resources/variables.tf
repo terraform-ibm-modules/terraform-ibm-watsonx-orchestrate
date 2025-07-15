@@ -25,9 +25,9 @@ variable "region" {
 }
 
 variable "plan" {
-  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials, standard."
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials-agentic-mau, standard-agentic-mau and premium-agentic-mau."
   type        = string
-  default     = "essentials"
+  default     = "essentials-agentic-mau"
 }
 
 variable "resource_group" {
