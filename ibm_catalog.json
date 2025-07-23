@@ -73,7 +73,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "sysdig-monitor",
-              "notes": "(Optional) Access to configure the IBM Cloud Monitoring instance and logging agents. Required if you're deploying Cloud automation for Observability."
+              "notes": "(Optional) Access to configure the IBM Cloud Monitoring instance and logging agents. Required if you're deploying Cloud automation for Observability, which includes IBM Cloud Monitoring."
             },
             {
               "role_crns": [
@@ -81,7 +81,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "logs",
-              "notes": "(Optional) Access to configure an IBM Cloud Logs instance. Required if you're deploying Cloud automation for Observability."
+              "notes": "(Optional) Access to configure an IBM Cloud Logs instance. Required if you're deploying Cloud automation for Observability, which includes IBM Cloud Logs."
             },
             {
               "role_crns": [
@@ -89,7 +89,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "(Optional) Access to create and configure an IBM Key Protect instance. Required if you're deploying Cloud automation for Observability."
+              "notes": "(Optional) Access to create and configure an IBM Key Protect instance. Required if you're deploying Cloud automation for Observability, which includes IBM Key Protect."
             },
             {
               "role_crns": [
@@ -97,7 +97,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "(Optional) Access to create and configure an Object Storage bucket. Required if you're deploying Cloud automation for Observability."
+              "notes": "(Optional) Access to create and configure an Object Storage bucket. Required if you're deploying Cloud automation for Observability, which includes Object Storage."
             }
           ],
           "architecture": {
