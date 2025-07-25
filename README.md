@@ -143,10 +143,10 @@ statement instead the previous block.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_tags"></a> [access\_tags](#input\_access\_tags) | A list of access tags to apply to the watsonx Orchestrate instance. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial. | `list(string)` | `[]` | no |
-| <a name="input_existing_watsonx_orchestrate_instance_crn"></a> [existing\_watsonx\_orchestrate\_instance\_crn](#input\_existing\_watsonx\_orchestrate\_instance\_crn) | The CRN of an existing watsonx Orchestrate instance.If not provided, a new instance will be provisioned. | `string` | `null` | no |
+| <a name="input_existing_watsonx_orchestrate_instance_crn"></a> [existing\_watsonx\_orchestrate\_instance\_crn](#input\_existing\_watsonx\_orchestrate\_instance\_crn) | The CRN of an existing watsonx Orchestrate instance.If not provided, a new instance is provisioned. | `string` | `null` | no |
 | <a name="input_plan"></a> [plan](#input\_plan) | The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials-agentic-mau, standard-agentic-mau and premium-agentic-mau. | `string` | `"lite"` | no |
-| <a name="input_region"></a> [region](#input\_region) | Region where the watsonx Orchestrate instance will be provisioned. Required if creating a new instance. | `string` | `"us-south"` | no |
-| <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The resource group ID where the watsonx Orchestrate instance will be grouped. Required when creating a new instance. | `string` | `null` | no |
+| <a name="input_region"></a> [region](#input\_region) | Region where the watsonx Orchestrate instance is provisioned. Required to create an instance of watsonx Orchestrate. | `string` | `"us-south"` | no |
+| <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group that contains the watsonx Orchestrate instance. Required to create an instance of watsonx Orchestrate. | `string` | `null` | no |
 | <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Optional list of tags to describe the watsonx Orchestrate instance created by the module. | `list(string)` | `[]` | no |
 | <a name="input_watsonx_orchestrate_name"></a> [watsonx\_orchestrate\_name](#input\_watsonx\_orchestrate\_name) | The name of the watsonx Orchestrate instance. Required if creating a new instance. | `string` | `null` | no |
 
