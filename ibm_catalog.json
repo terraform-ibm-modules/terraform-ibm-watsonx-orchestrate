@@ -22,18 +22,18 @@
         "ai"
       ],
       "short_description": "Creates and configures an instance of IBM watsonx Orchestrate.",
-      "long_description": "IBM watsonx Orchestrate puts AI to work—helping you build, deploy and manage powerful AI assistants and agents that automate workflows and processes with generative AI. This deployable architecture creates and configures an instance of IBM watsonx Orchestrate. For detailed information on IBM watsonx Orchestrate, please refer this [documentation](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current?topic=getting-started-watsonx-orchestrate).",
+      "long_description": "[IBM watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current?topic=getting-started-watsonx-orchestrate) puts AI to work, helping you build, deploy, and manage powerful AI assistants and agents that automate workflows and processes with generative AI. In addition to watsonx Orchestrate, this deployable architecture includes optional tools for key encryption and observability, giving you everything that you need to manage your watsonx Orchestrate deployment.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/images/watsonx-orchestrate.svg",
       "provider_name": "IBM",
       "features": [
         {
           "title": "watsonx Orchestrate instance",
-          "description": "Provision and configure an instance of IBM watsonx Orchestrate. Explore more about IBM watsonx Orchestrate [here](https://www.ibm.com/products/watsonx-orchestrate)."
+          "description": "Get started with watsonx Orchestrate by creating and configuring an instance. [Learn more](https://www.ibm.com/products/watsonx-orchestrate)."
         },
         {
-          "title": "Optional Integrations",
-          "description": "This solution can be integrated with [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring and activity tracker event routing."
+          "title": "Optional observability tools",
+          "description": "Use watsonx Orchestrate with [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global), which provides monitoring and logging capabilities to deliver deep operational insights into your watsonx Orchestrate deployment."
         }
       ],
       "support_details": "This product is in the community registry, as such support is handled through the originated repository. If you experience issues, please open an issue in the repository [here](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/issues). Please note this product is not supported via the IBM Cloud Support Center.",
@@ -64,19 +64,14 @@
             {
               "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
               "service_name": "All Account Management services",
-              "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group."
-            },
-            {
-              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
-              "service_name": "All Identity and Access enabled services",
-              "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group with account setting."
+              "notes": "[Optional] Required to create foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "watsonx-orchestrate",
-              "notes": "Required for creating a new instance of watsonx Orchestrate."
+              "notes": "Required to create an instance of watsonx Orchestrate."
             },
             {
               "role_crns": [
@@ -84,7 +79,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required for enabling KMS encryption in Event Routing and Cloud Logs deployable architecture."
+              "notes": "[Optional] Required if you're deploying Cloud automation for Key Protect."
             },
             {
               "service_name": "hs-crypto",
@@ -100,7 +95,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "notes": "Required for configuring Activity Tracker event routing to Cloud Object Storage bucket and Cloud Logs."
+              "notes": "Required for configuring Activity Tracker vent routing to Cloud Object Storage bucket and Cloud Logs."
             },
             {
               "role_crns": [
@@ -108,11 +103,11 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "sysdig-monitor",
-              "notes": "[Optional] Required for creating a new instance of Cloud Monitoring."
+              "notes": "[Optional] Required if you're deploying Cloud automation for Cloud Monitoring."
             },
             {
               "service_name": "logs",
-              "notes": "[Optional] Required for creating a new instance of Cloud Logs.",
+              "notes": "[Optional] Required if you're deploying Cloud automation for Cloud Logs.",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
@@ -120,7 +115,7 @@
             },
             {
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required for enabling COS in Event Routing and Cloud Logs deployable architecture.",
+              "notes": "[Optional] Required if you're deploying Cloud automation for Object Storage.",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Viewer"
@@ -141,7 +136,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/reference-architecture/deployable-architecture-watsonx-orchestrate.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This solution deploys a <b>watsonx Orchestrate</b> instance on IBM Cloud, with optional integration of additional services to support enterprise-grade requirements.<br><br>You can integrate IBM Cloud Observability resources. Cloud automation for Observability provides robust monitoring and logging capabilities to deliver deep operational insights into your watsonx Orchestrate deployment. You can use IBM Cloud Activity Tracker Event Routing to monitor how users and applications interact with watsonx Orchestrate, supporting compliance and auditability. IBM Cloud Logs can be enabled to collect, view, and analyze platform logs related to key watsonx Orchestrate components. Furthermore, IBM Cloud Monitoring captures essential metrics such as CPU and memory utilization, helping you proactively monitor system performance and resource consumption."
+                "description": "This deployable architecture provisions a <b>watsonx Orchestrate</b> instance on IBM Cloud. After the instance is created, you receive a link to a dashboard that provides direct access to your watsonx Orchestrate environment. Optionally, you can also configure observability services, which includes IBM Cloud Activity Tracker Event Routing to monitor how users and applications interact with watsonx Orchestrate, supporting compliance and auditability. Enable IBM Cloud Logs to collect, view, and analyze platform logs related to watsonx Orchestrate to gain visibility into usage patterns through active tasks and queries. While IBM Cloud Monitoring captures essential metrics such as CPU and memory usage, helping you proactively monitor system performance and resource consumption."
               }
             ]
           },
@@ -208,7 +203,7 @@
               "key": "enable_platform_metrics",
               "type": "string",
               "default_value": "true",
-              "description": "When set to `true`, the IBM Cloud Monitoring instance will be configured to collect platform metrics from the provided region. You can configure 1 instance only of the IBM Cloud Monitoring service per region to collect platform metrics in that location. Check with the account or service administrator if another monitoring instance has already been configured. You may not have permissions to see all monitoring instances in the region. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-platform_metrics_enabling).",
+              "description": "When set to `true`, the IBM Cloud Monitoring instance is configured to collect platform metrics from the specified region. You can configure only one instance of the IBM Cloud Monitoring service per region to collect platform metrics in that location. Check with the account or service administrator if another monitoring instance is already configured. You might not have permissions to see all monitoring instances in the region. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-platform_metrics_enabling).",
               "required": true,
               "virtual": true,
               "options": [
@@ -281,7 +276,7 @@
           "dependencies": [
             {
               "name": "deploy-arch-ibm-account-infra-base",
-              "description": "Cloud automation for Account Configuration organizes your IBM Cloud account with a ready-made set of resource groups by default—and, when you enable the \"with Account Settings\" option, it also applies baseline security and governance settings.",
+              "description": "Cloud automation for account configuration organizes your IBM Cloud account with a ready-made set of resource groups by default. And, when you enable the \"with Account Settings\" option, it also applies baseline security and governance settings.",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
                 "resource-group-only",
@@ -311,7 +306,7 @@
             },
             {
               "name": "deploy-arch-ibm-cloud-logs",
-              "description": "Provision and configure IBM Cloud Logs for analysing logs generated by the watsonx Orchestrate instance.",
+              "description": "Configure IBM Cloud Logs for analyzing logs generated by the watsonx Orchestrate instance.",
               "id": "63d8ae58-fbf3-41ce-b844-0fb5b85882ab-global",
               "version": "v1.5.6",
               "flavors": [
@@ -340,7 +335,7 @@
             },
             {
               "name": "deploy-arch-ibm-cloud-monitoring",
-              "description": "Provision and configure IBM Cloud Monitoring for metrics generated by the watsonx Orchestrate instance.",
+              "description": "Configure IBM Cloud Monitoring for analyzing metrics generated by the watsonx Orchestrate instance.",
               "flavors": ["fully-configurable"],
               "id": "73debdbf-894f-4c14-81c7-5ece3a70b67d-global",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",

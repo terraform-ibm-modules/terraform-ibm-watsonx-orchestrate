@@ -3,7 +3,7 @@
 ########################################################################################################################
 
 variable "resource_group_id" {
-  description = "The resource group ID where the watsonx Orchestrate instance will be grouped. Required when creating a new instance."
+  description = "The ID of the resource group that contains the watsonx Orchestrate instance. Required to create an instance of watsonx Orchestrate."
   type        = string
   default     = null
   validation {
@@ -13,7 +13,7 @@ variable "resource_group_id" {
 }
 
 variable "region" {
-  description = "Region where the watsonx Orchestrate instance will be provisioned. Required if creating a new instance."
+  description = "Region where the watsonx Orchestrate instance is provisioned. Required to create an instance of watsonx Orchestrate."
   type        = string
   default     = "us-south"
 
@@ -26,7 +26,7 @@ variable "region" {
       var.region == "au-syd",
       var.region == "jp-tok"
     ])
-    error_message = "Region must be specified and set to one of the permitted values ('us-south', 'ca-tor', 'eu-gb', 'eu-de', 'au-syd', 'jp-tok') when provisioning a new instance."
+    error_message = "Region must be specified and set to one of the possible values ('us-south', 'ca-tor', 'eu-gb', 'eu-de', 'au-syd', 'jp-tok') when an instance is provisioned."
   }
 }
 
@@ -56,12 +56,12 @@ variable "watsonx_orchestrate_name" {
 
   validation {
     condition     = var.existing_watsonx_orchestrate_instance_crn == null ? length(var.watsonx_orchestrate_name) > 0 : true
-    error_message = "watsonx Orchestrate name must be provided when creating a new instance."
+    error_message = "watsonx Orchestrate name must be provided when an instance is created."
   }
 }
 
 variable "existing_watsonx_orchestrate_instance_crn" {
-  description = "The CRN of an existing watsonx Orchestrate instance.If not provided, a new instance will be provisioned."
+  description = "The CRN of an existing watsonx Orchestrate instance.If not provided, a new instance is provisioned."
   type        = string
   default     = null
 }
@@ -72,7 +72,7 @@ variable "plan" {
   default     = "lite"
   validation {
     condition     = var.existing_watsonx_orchestrate_instance_crn != null || var.plan != null
-    error_message = "watsonx Orchestrate plan must be provided when creating a new instance."
+    error_message = "watsonx Orchestrate plan must be provided when an instance is created."
   }
   validation {
     condition = anytrue([
