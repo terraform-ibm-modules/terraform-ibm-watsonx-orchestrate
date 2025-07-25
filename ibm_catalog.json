@@ -58,7 +58,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "All Account Management services",
-              "notes": "[Optional] Required to create foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource groups." 
+              "notes": "[Optional] Required to create foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
               "role_crns": [
