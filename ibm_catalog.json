@@ -8,9 +8,10 @@
         "ibm_created",
         "target_terraform",
         "terraform",
+        "solution",
         "watson",
         "ai",
-        "solution"
+        "converged_infra"
       ],
       "keywords": [
         "watsonx orchestrate",
@@ -179,12 +180,16 @@
                   "value": "lite"
                 },
                 {
-                  "displayname": "Essentials",
-                  "value": "essentials"
+                  "displayname": "Essentials Agentic with Monthly Active Users",
+                  "value": "essentials-agentic-mau"
                 },
                 {
-                  "displayname": "Standard",
-                  "value": "standard"
+                  "displayname": "Standard Agentic with Monthly Active Users",
+                  "value": "standard-agentic-mau"
+                },
+                {
+                  "displayname": "Premium Agentic with Monthly Active Users",
+                  "value": "premium-agentic-mau"
                 }
               ]
             },

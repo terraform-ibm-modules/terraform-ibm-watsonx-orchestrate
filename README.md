@@ -5,7 +5,7 @@ Update status and "latest release" badges:
   1. For the status options, see https://terraform-ibm-modules.github.io/documentation/#/badge-status
   2. Update the "latest release" badge to point to the correct module's repo. Replace "terraform-ibm-module-template" in two places.
 -->
-[![Stable (With quality checks)](https://img.shields.io/badge/Status-Stable%20(With%20quality%20checks)-green)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
+[![Graduated (Supported)](https://img.shields.io/badge/status-Graduated%20(Supported)-brightgreen?style=plastic)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
 [![latest release](https://img.shields.io/github/v/release/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate?logo=GitHub&sort=semver)](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
@@ -63,7 +63,7 @@ module "watsonx_orchestrate" {
   version           = "X.Y.Z" # Replace "X.Y.Z" with a release version to lock into a specific
   region                = "us-south"
   watsonx_orchestrate_name = "example-wx-orchestrate"
-  watsonx_orchestrate_plan     = "standard"
+  watsonx_orchestrate_plan     = "standard-agentic-mau"
   resource_group_id         = "a8c...8230a" # replace with ID of resource group
 }
 ```
@@ -144,7 +144,7 @@ statement instead the previous block.
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_tags"></a> [access\_tags](#input\_access\_tags) | A list of access tags to apply to the watsonx Orchestrate instance. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial. | `list(string)` | `[]` | no |
 | <a name="input_existing_watsonx_orchestrate_instance_crn"></a> [existing\_watsonx\_orchestrate\_instance\_crn](#input\_existing\_watsonx\_orchestrate\_instance\_crn) | The CRN of an existing watsonx Orchestrate instance.If not provided, a new instance will be provisioned. | `string` | `null` | no |
-| <a name="input_plan"></a> [plan](#input\_plan) | The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials, standard. | `string` | `"lite"` | no |
+| <a name="input_plan"></a> [plan](#input\_plan) | The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials-agentic-mau, standard-agentic-mau and premium-agentic-mau. | `string` | `"lite"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Region where the watsonx Orchestrate instance will be provisioned. Required if creating a new instance. | `string` | `"us-south"` | no |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The resource group ID where the watsonx Orchestrate instance will be grouped. Required when creating a new instance. | `string` | `null` | no |
 | <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Optional list of tags to describe the watsonx Orchestrate instance created by the module. | `list(string)` | `[]` | no |
