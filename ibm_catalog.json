@@ -95,7 +95,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "notes": "Required for configuring Activity Tracker vent routing to Cloud Object Storage bucket and Cloud Logs."
+              "notes": "Required for configuring Activity Tracker Event routing to Object Storage bucket and Cloud Logs."
             },
             {
               "role_crns": [
