@@ -20,5 +20,6 @@ module "watsonx_orchestrate" {
   watsonx_orchestrate_name = "${var.prefix}-orchestrate"
   resource_group_id        = module.resource_group.resource_group_id
   resource_tags            = var.resource_tags
+  plan                     = "essentials-agentic-mau"
   access_tags              = var.access_tags
 }
