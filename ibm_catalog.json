@@ -64,7 +64,12 @@
             {
               "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
               "service_name": "All Account Management services",
-              "notes": "[Optional] Required to create foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource groups."
+              "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group."
+            },
+            {
+              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
+              "service_name": "All Identity and Access enabled services",
+              "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group with account settings."
             },
             {
               "role_crns": [
@@ -82,20 +87,20 @@
               "notes": "[Optional] Required if you're deploying Cloud automation for Key Protect."
             },
             {
-              "service_name": "hs-crypto",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
+              "service_name": "hs-crypto",
               "notes": "[Optional] Required for enabling Hyper Protect Crypto Services in Event Routing and Cloud Logs deployable architecture."
             },
             {
-              "service_name": "atracker",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "notes": "Required for configuring Activity Tracker Event routing to Object Storage bucket and Cloud Logs."
+              "service_name": "atracker",
+              "notes": "Required for configuring Activity Tracker event routing to Object Storage bucket and Cloud Logs."
             },
             {
               "role_crns": [
@@ -106,20 +111,20 @@
               "notes": "[Optional] Required if you're deploying Cloud automation for Cloud Monitoring."
             },
             {
-              "service_name": "logs",
-              "notes": "[Optional] Required if you're deploying Cloud automation for Cloud Logs.",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
-              ]
+              ],
+              "service_name": "logs",
+              "notes": "[Optional] Required if you're deploying Cloud automation for Cloud Logs."
             },
             {
-              "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if you're deploying Cloud automation for Object Storage.",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                "crn:v1:bluemix:public:iam::::role:Viewer"
-              ]
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "cloud-object-storage",
+              "notes": "[Optional] Required if you're deploying Cloud automation for Object Storage."
             }
           ],
           "architecture": {
@@ -324,6 +329,11 @@
                 {
                   "dependency_input": "region",
                   "version_input": "region",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "existing_resource_group_name",
+                  "version_input": "existing_resource_group_name",
                   "reference_version": true
                 },
                 {
