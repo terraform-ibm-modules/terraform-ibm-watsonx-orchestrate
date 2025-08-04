@@ -29,7 +29,7 @@
       "features": [
         {
           "title": "watsonx Orchestrate instance",
-          "description": "Get started with watsonx Orchestrate by creating and configuring an instance. [Learn more](https://www.ibm.com/products/watsonx-orchestrate)."
+          "description": "Provision and configure an instance of IBM watsonx Orchestrate. [Learn more](https://www.ibm.com/products/watsonx-orchestrate)."
         },
         {
           "title": "Optional observability tools",

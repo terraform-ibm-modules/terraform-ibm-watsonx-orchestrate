@@ -9,7 +9,7 @@ variable "ibmcloud_api_key" {
 }
 
 variable "provider_visibility" {
-  description = "Set the visibility value for the IBM terraform provider. Supported values are `public`, `private`, `public-and-private`. [Learn more](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/guides/custom-service-endpoints)."
+  description = "Set the visibility value for the IBM terraform provider. [Learn more](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/guides/custom-service-endpoints)."
   type        = string
   default     = "private"
 
@@ -23,7 +23,6 @@ variable "existing_resource_group_name" {
   type        = string
   description = "The name of an existing resource group in which the watsonx Orchestrate instance will be provisioned."
   default     = "Default"
-  nullable    = false
 }
 
 variable "prefix" {
