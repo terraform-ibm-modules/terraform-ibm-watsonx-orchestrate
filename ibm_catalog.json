@@ -21,7 +21,7 @@
         "solution",
         "ai"
       ],
-      "short_description": "Creates and configures an instance of IBM watsonx Orchestrate.",
+      "short_description": "Creates and configures an instance of IBM watsonx Orchestrate",
       "long_description": "[IBM watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current?topic=getting-started-watsonx-orchestrate) puts AI to work, helping you build, deploy, and manage powerful AI assistants and agents that automate workflows and processes with generative AI. In addition to watsonx Orchestrate, this deployable architecture includes optional tools for key encryption and observability, giving you everything that you need to manage your watsonx Orchestrate deployment.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/images/watsonx-orchestrate.svg",
@@ -36,7 +36,7 @@
           "description": "Use watsonx Orchestrate with [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global), which provides monitoring and logging capabilities to deliver deep operational insights into your watsonx Orchestrate deployment."
         }
       ],
-      "support_details": "This product is in the community registry, as such support is handled through the originated repository. If you experience issues, please open an issue in the repository [here](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/issues). Please note this product is not supported via the IBM Cloud Support Center.",
+      "support_details": "This product is in the community registry, support is handled through the [original repo](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate). If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Fully configurable",
@@ -62,12 +62,16 @@
               "notes": "Viewer access is required in the resource group you want to provision in."
             },
             {
-              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
               "service_name": "All Account Management services",
               "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group."
             },
             {
-              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
               "service_name": "All Identity and Access enabled services",
               "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group with account settings."
             },
@@ -84,7 +88,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required if you're deploying Cloud automation for Key Protect."
+              "notes": "[Optional] Required for enabling Cloud automation of Key Protect in the Observability deployable architecture."
             },
             {
               "role_crns": [
@@ -92,7 +96,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] Required for enabling Hyper Protect Crypto Services in Event Routing and Cloud Logs deployable architecture."
+              "notes": "[Optional] Required for enabling Hyper Protect Crypto Services in the Observability deployable architecture used for Event Routing and Cloud Logs."
             },
             {
               "role_crns": [
@@ -100,7 +104,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "atracker",
-              "notes": "Required for configuring Activity Tracker event routing to Object Storage bucket and Cloud Logs."
+              "notes": "[Optional] Required for configuring Activity Tracker event routing to Object Storage bucket and enabling Cloud Logs through the Observability deployable architecture."
             },
             {
               "role_crns": [
@@ -108,7 +112,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "sysdig-monitor",
-              "notes": "[Optional] Required if you're deploying Cloud automation for Cloud Monitoring."
+              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Monitoring."
             },
             {
               "role_crns": [
@@ -116,7 +120,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "logs",
-              "notes": "[Optional] Required if you're deploying Cloud automation for Cloud Logs."
+              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Logs."
             },
             {
               "role_crns": [
@@ -124,7 +128,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if you're deploying Cloud automation for Object Storage."
+              "notes": "[Optional] Required if you are deploying Cloud automation for Object Storage."
             }
           ],
           "architecture": {
@@ -208,7 +212,7 @@
               "key": "enable_platform_metrics",
               "type": "string",
               "default_value": "true",
-              "description": "When set to `true`, the IBM Cloud Monitoring instance is configured to collect platform metrics from the specified region. You can configure only one instance of the IBM Cloud Monitoring service per region to collect platform metrics in that location. Check with the account or service administrator if another monitoring instance is already configured. You might not have permissions to see all monitoring instances in the region. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-platform_metrics_enabling).",
+              "description": "When set to `true`, the IBM Cloud Monitoring instance is configured to collect platform metrics from the specified region. ⚠️ You can configure only one instance of the IBM Cloud Monitoring service per region to collect platform metrics in that location. Check with the account or service administrator if another monitoring instance is already configured. You might not have permissions to see all monitoring instances in the region. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-platform_metrics_enabling).",
               "required": true,
               "virtual": true,
               "options": [
@@ -310,45 +314,16 @@
               "version": "v3.0.7"
             },
             {
-              "name": "deploy-arch-ibm-cloud-logs",
-              "description": "Configure IBM Cloud Logs for analyzing logs generated by the watsonx Orchestrate instance.",
-              "id": "63d8ae58-fbf3-41ce-b844-0fb5b85882ab-global",
-              "version": "v1.5.6",
+              "name": "deploy-arch-ibm-observability",
+              "description": "Configure IBM Cloud Logs, IBM Cloud Monitoring and IBM Cloud Activity Tracker Event Routing for analyzing logs and metrics generated by the watsonx Orchestrate instance.",
+              "id": "a3137d28-79e0-479d-8a24-758ebd5a0eab-global",
+              "version": "v3.0.3",
               "flavors": [
-                "fully-configurable"
+                "instances"
               ],
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "optional": true,
               "on_by_default": true,
-              "input_mapping": [
-                {
-                  "dependency_input": "prefix",
-                  "version_input": "prefix",
-                  "reference_version": true
-                },
-                {
-                  "dependency_input": "region",
-                  "version_input": "region",
-                  "reference_version": true
-                },
-                {
-                  "dependency_input": "existing_resource_group_name",
-                  "version_input": "existing_resource_group_name",
-                  "reference_version": true
-                },
-                {
-                  "dependency_input": "logs_routing_tenant_regions",
-                  "version_input": "logs_routing_tenant_regions",
-                  "reference_version": true
-                }
-              ]
-            },
-            {
-              "name": "deploy-arch-ibm-cloud-monitoring",
-              "description": "Configure IBM Cloud Monitoring for analyzing metrics generated by the watsonx Orchestrate instance.",
-              "flavors": ["fully-configurable"],
-              "id": "73debdbf-894f-4c14-81c7-5ece3a70b67d-global",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "input_mapping": [
                 {
                   "dependency_input": "prefix",
@@ -364,33 +339,13 @@
                   "dependency_input": "enable_platform_metrics",
                   "version_input": "enable_platform_metrics",
                   "reference_version": true
-                }
-              ],
-              "optional": true,
-              "on_by_default": true,
-              "version": "v1.3.0"
-            },
-            {
-              "name": "deploy-arch-ibm-activity-tracker",
-              "description": "Configure a new IBM Cloud Logs instance for viewing activity tracking events generated by the watsonx Orchestrate instance.",
-              "flavors": ["fully-configurable"],
-              "id": "918453c3-4f97-4583-8c4a-83ef12fc7916-global",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-              "input_mapping": [
-                {
-                  "dependency_input": "prefix",
-                  "version_input": "prefix",
-                  "reference_version": true
                 },
                 {
-                  "dependency_input": "region",
-                  "version_input": "region",
+                  "dependency_input": "logs_routing_tenant_regions",
+                  "version_input": "logs_routing_tenant_regions",
                   "reference_version": true
                 }
-              ],
-              "optional": true,
-              "on_by_default": true,
-              "version": "v1.1.4"
+              ]
             }
           ],
           "dependency_version_2": true,
