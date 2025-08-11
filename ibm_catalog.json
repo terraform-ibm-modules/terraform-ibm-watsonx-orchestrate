@@ -88,7 +88,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required to deploy Cloud automation for Key Protect, so you can use your own managed encryption keys with watsonx Orchestrate."
+              "notes": "[Optional] Required to deploy Cloud automation for Key Protect, so you can use your own managed encryption keys."
             },
             {
               "role_crns": [
@@ -96,7 +96,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] Required to deploy Hyper Protect Crypto Services in Cloud automation for Observability."
+              "notes": "[Optional] Required if Hyper Protect Crypto Services is used in Cloud automation for Observability."
             },
             {
               "role_crns": [
@@ -104,7 +104,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "atracker",
-              "notes": "[Optional] Required to configure Activity Tracker Event Routing to an Object Storage bucket and enable Cloud Logs with Cloud automation for Observability."
+              "notes": "[Optional] Required to configure Activity Tracker Event Routing with Cloud automation for Observability."
             },
             {
               "role_crns": [
@@ -112,7 +112,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "sysdig-monitor",
-              "notes": "[Optional] Required to deploy Cloud automation for Observability, which includes Cloud Monitoring."
+              "notes": "[Optional] Required to create an instance of Cloud Monitoring."
             },
             {
               "role_crns": [
@@ -120,7 +120,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "logs",
-              "notes": "[Optional] Required to deploy Cloud automation for Observability, which includes Cloud Logs."
+              "notes": "[Optional] Required to create an instance of Cloud Logs."
             },
             {
               "role_crns": [
