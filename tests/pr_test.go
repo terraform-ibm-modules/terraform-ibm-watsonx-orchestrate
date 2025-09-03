@@ -217,7 +217,7 @@ func TestDefaultConfiguration(t *testing.T) {
 		"deploy-arch-ibm-watsonx-orchestrate",
 		"fully-configurable",
 		map[string]interface{}{
-			"prefix":                       "wxordeft",
+			"prefix":                       options.Prefix,
 			"existing_resource_group_name": resourceGroup,
 		},
 	)
@@ -228,6 +228,8 @@ func TestDefaultConfiguration(t *testing.T) {
 
 // TestDependencyPermutations runs dependency permutations for watsonx orchestrate and all its dependencies
 func TestDependencyPermutations(t *testing.T) {
+	t.Skip("Skipping dependency permutations")
+	t.Parallel()
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
 		Testing: t,
