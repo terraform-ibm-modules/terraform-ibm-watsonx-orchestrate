@@ -157,10 +157,14 @@ func TestRunExistingResourcesExample(t *testing.T) {
 
 func setupFullyConfigurableOptions(t *testing.T, prefix string) *testschematic.TestSchematicOptions {
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
-		Testing:          t,
-		TemplateFolder:   fullyConfigurableSolutionTerraformDir,
-		Region:           validRegions[rand.Intn(len(validRegions))],
-		Prefix:           prefix,
+		Testing:        t,
+		TemplateFolder: fullyConfigurableSolutionTerraformDir,
+		Region:         validRegions[rand.Intn(len(validRegions))],
+		Prefix:         prefix,
+		TarIncludePatterns: []string{
+			"*.tf",
+			fullyConfigurableSolutionTerraformDir + "/*.tf",
+		},
 		ResourceGroup:    resourceGroup,
 		TerraformVersion: terraformVersion,
 	})
