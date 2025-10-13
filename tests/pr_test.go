@@ -9,6 +9,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/IBM/go-sdk-core/core"
 	"github.com/gruntwork-io/terratest/modules/files"
 	"github.com/gruntwork-io/terratest/modules/logger"
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -21,13 +22,15 @@ import (
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testaddons"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testschematic"
 )
 
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
 const basicExampleDir = "examples/basic"
 const existingExampleDir = "examples/existing-instance"
-const standardSolutionTerraformDir = "solutions/fully-configurable"
+const fullyConfigurableSolutionTerraformDir = "solutions/fully-configurable"
+const terraformVersion = "terraform_v1.10" // This should match the version in the ibm_catalog.json
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
@@ -152,53 +155,49 @@ func TestRunExistingResourcesExample(t *testing.T) {
 	}
 }
 
-func TestRunStandardSolution(t *testing.T) {
-	t.Parallel()
-
-	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
-		Testing:       t,
-		TerraformDir:  standardSolutionTerraformDir,
-		Region:        validRegions[rand.Intn(len(validRegions))],
-		Prefix:        "wxo-da",
-		ResourceGroup: resourceGroup,
+func setupFullyConfigurableOptions(t *testing.T, prefix string) *testschematic.TestSchematicOptions {
+	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
+		Testing:        t,
+		TemplateFolder: fullyConfigurableSolutionTerraformDir,
+		Region:         validRegions[rand.Intn(len(validRegions))],
+		Prefix:         prefix,
+		TarIncludePatterns: []string{
+			"*.tf",
+			fullyConfigurableSolutionTerraformDir + "/*.tf",
+		},
+		ResourceGroup:    resourceGroup,
+		TerraformVersion: terraformVersion,
 	})
 
-	options.TerraformVars = map[string]interface{}{
-		"service_plan":                 "essentials-agentic-mau",
-		"provider_visibility":          "public",
-		"existing_resource_group_name": resourceGroup,
-		"prefix":                       options.Prefix,
-		"region":                       options.Region,
+	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
+		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
+		{Name: "prefix", Value: options.Prefix, DataType: "string"},
+		{Name: "region", Value: options.Region, DataType: "string"},
+		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
+		{Name: "provider_visibility", Value: "private", DataType: "string"},
+		{Name: "service_plan", Value: "essentials-agentic-mau", DataType: "string"},
 	}
-
-	output, err := options.RunTestConsistency()
-	assert.Nil(t, err, "This should not have errored")
-	assert.NotNil(t, output, "Expected some output")
+	return options
 }
 
-func TestRunStandardUpgradeSolution(t *testing.T) {
+func TestRunFullyConfigurableSolutionSchematics(t *testing.T) {
 	t.Parallel()
 
-	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
-		Testing:       t,
-		TerraformDir:  standardSolutionTerraformDir,
-		Region:        validRegions[rand.Intn(len(validRegions))],
-		Prefix:        "wxo-upg",
-		ResourceGroup: resourceGroup,
-	})
+	options := setupFullyConfigurableOptions(t, "wxo-da")
 
-	options.TerraformVars = map[string]interface{}{
-		"service_plan":                 "essentials-agentic-mau",
-		"provider_visibility":          "public",
-		"existing_resource_group_name": resourceGroup,
-		"prefix":                       options.Prefix,
-		"region":                       options.Region,
-	}
+	err := options.RunSchematicTest()
+	assert.Nil(t, err, "This should not have errored")
+}
 
-	output, err := options.RunTestUpgrade()
+func TestRunFullyConfigurableUpgradeSolutionSchematics(t *testing.T) {
+	t.Parallel()
+
+	options := setupFullyConfigurableOptions(t, "wxo-upg")
+	options.CheckApplyResultForUpgrade = true
+
+	err := options.RunSchematicUpgradeTest()
 	if !options.UpgradeTestSkipped {
 		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
 	}
 }
 
@@ -221,29 +220,26 @@ func TestDefaultConfiguration(t *testing.T) {
 			"existing_resource_group_name": resourceGroup,
 		},
 	)
+	// Disable target / route creation to prevent hitting quota in account
+	options.AddonConfig.Dependencies = []cloudinfo.AddonConfig{
+		{
+			OfferingName:   "deploy-arch-ibm-cloud-monitoring",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"enable_metrics_routing_to_cloud_monitoring": false,
+			},
+			Enabled: core.BoolPtr(true),
+		},
+		{
+			OfferingName:   "deploy-arch-ibm-activity-tracker",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"enable_activity_tracker_event_routing_to_cloud_logs": false,
+			},
+			Enabled: core.BoolPtr(true),
+		},
+	}
 
 	err := options.RunAddonTest()
 	require.NoError(t, err)
-}
-
-// TestDependencyPermutations runs dependency permutations for watsonx orchestrate and all its dependencies
-func TestDependencyPermutations(t *testing.T) {
-	t.Skip("Skipping dependency permutations")
-	t.Parallel()
-
-	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
-		Testing: t,
-		Prefix:  "wxor-perm",
-		AddonConfig: cloudinfo.AddonConfig{
-			OfferingName:   "deploy-arch-ibm-watsonx-orchestrate",
-			OfferingFlavor: "fully-configurable",
-			Inputs: map[string]interface{}{
-				"prefix":                       "wxor-perm",
-				"existing_resource_group_name": resourceGroup,
-			},
-		},
-	})
-
-	err := options.RunAddonPermutationTest()
-	assert.NoError(t, err, "Dependency permutation test should not fail")
 }
