@@ -209,10 +209,6 @@
                 {
                   "displayname": "Standard Agentic with Monthly Active Users",
                   "value": "standard-agentic-mau"
-                },
-                {
-                  "displayname": "Premium Agentic with Monthly Active Users",
-                  "value": "premium-agentic-mau"
                 }
               ]
             },
