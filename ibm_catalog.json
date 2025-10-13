@@ -150,7 +150,7 @@
               {
                 "diagram": {
                   "caption": "watsonx Orchestrate on IBM Cloud",
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/reference-architecture/deployable-architecture-watsonx-orchestrate.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/reference-architectures/deployable-architecture-watsonx-orchestrate.svg",
                   "type": "image/svg+xml"
                 },
                 "description": "This deployable architecture provisions a <b>watsonx Orchestrate</b> instance on IBM Cloud. After the instance is created, you receive a link to a dashboard that provides direct access to your watsonx Orchestrate environment. Optionally, you can also configure observability services, which includes IBM Cloud Activity Tracker Event Routing to monitor how users and applications interact with watsonx Orchestrate, supporting compliance and auditability. Enable IBM Cloud Logs to collect, view, and analyze platform logs related to watsonx Orchestrate to gain visibility into usage patterns through active tasks and queries. While IBM Cloud Monitoring captures essential metrics such as CPU and memory usage, helping you proactively monitor system performance and resource consumption."
