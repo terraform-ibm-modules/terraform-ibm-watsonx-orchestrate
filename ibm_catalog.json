@@ -150,7 +150,7 @@
               {
                 "diagram": {
                   "caption": "watsonx Orchestrate on IBM Cloud",
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/reference-architecture/deployable-architecture-watsonx-orchestrate.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/reference-architectures/deployable-architecture-watsonx-orchestrate.svg",
                   "type": "image/svg+xml"
                 },
                 "description": "This deployable architecture provisions a <b>watsonx Orchestrate</b> instance on IBM Cloud. After the instance is created, you receive a link to a dashboard that provides direct access to your watsonx Orchestrate environment. Optionally, you can also configure observability services, which includes IBM Cloud Activity Tracker Event Routing to monitor how users and applications interact with watsonx Orchestrate, supporting compliance and auditability. Enable IBM Cloud Logs to collect, view, and analyze platform logs related to watsonx Orchestrate to gain visibility into usage patterns through active tasks and queries. While IBM Cloud Monitoring captures essential metrics such as CPU and memory usage, helping you proactively monitor system performance and resource consumption."
@@ -216,10 +216,6 @@
                 {
                   "displayname": "Standard Agentic with Monthly Active Users",
                   "value": "standard-agentic-mau"
-                },
-                {
-                  "displayname": "Premium Agentic with Monthly Active Users",
-                  "value": "premium-agentic-mau"
                 }
               ]
             },
@@ -330,7 +326,7 @@
               ],
               "optional": true,
               "on_by_default": false,
-              "version": "v3.0.7"
+              "version": "v3.0.23"
             },
             {
               "name": "deploy-arch-ibm-cloud-monitoring",
@@ -363,7 +359,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.6.4"
+              "version": "v1.7.2"
             },
             {
               "name": "deploy-arch-ibm-cloud-logs",
@@ -392,7 +388,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.6.11"
+              "version": "v1.6.28"
             },
             {
               "name": "deploy-arch-ibm-activity-tracker",
@@ -416,7 +412,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.2.25"
+              "version": "v1.2.34"
             },
             {
               "name": "deploy-arch-ibm-scc-workload-protection",
@@ -440,7 +436,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.11.4"
+              "version": "v1.12.3"
             }
           ],
           "dependency_version_2": true,

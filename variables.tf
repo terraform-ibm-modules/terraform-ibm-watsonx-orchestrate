@@ -67,7 +67,7 @@ variable "existing_watsonx_orchestrate_instance_crn" {
 }
 
 variable "plan" {
-  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials-agentic-mau, standard-agentic-mau and premium-agentic-mau."
+  description = "The plan that is required to provision the watsonx Orchestrate instance. Possible values are: lite, essentials-agentic-mau and standard-agentic-mau."
   type        = string
   default     = "lite"
   validation {
@@ -78,9 +78,8 @@ variable "plan" {
     condition = anytrue([
       var.plan == "lite", # This refers to the Trial plan.
       var.plan == "essentials-agentic-mau",
-      var.plan == "standard-agentic-mau",
-      var.plan == "premium-agentic-mau"
+      var.plan == "standard-agentic-mau"
     ]) || var.existing_watsonx_orchestrate_instance_crn != null
-    error_message = "A new watsonx Orchestrate instance requires a 'lite', 'essentials-agentic-mau', 'standard-agentic-mau' or 'premium-agentic-mau' plan."
+    error_message = "A new watsonx Orchestrate instance requires a 'lite', 'essentials-agentic-mau' or 'standard-agentic-mau' plan."
   }
 }
