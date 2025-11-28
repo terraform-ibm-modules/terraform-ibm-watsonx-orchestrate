@@ -22,7 +22,7 @@
         "ai"
       ],
       "short_description": "Creates and configures an instance of IBM watsonx Orchestrate",
-      "long_description": "[IBM watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current?topic=getting-started-watsonx-orchestrate) puts AI to work, helping you build, deploy, and manage powerful AI assistants and agents that automate workflows and processes with generative AI. In addition to watsonx Orchestrate, this deployable architecture includes optional tools for key encryption and observability, giving you everything that you need to manage your watsonx Orchestrate deployment.",
+      "long_description": "[IBM watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current?topic=getting-started-watsonx-orchestrate) puts AI to work, helping you build, deploy, and manage powerful AI assistants and agents that automate workflows and processes with generative AI. In addition to watsonx Orchestrate, this deployable architecture includes optional tools for key encryption and observability, giving you everything that you need to manage your watsonx Orchestrate deployment. \n\nLeverage [Terraform IBM Modules](https://github.com/terraform-ibm-modules) to shape and scale your solutions. You can integrate Terraform IBM Modules (TIM) to extend functionality and design a solution tailored to your environment and operations needs. These modules offer reusable, customizable elements that follow IBM Cloud's recommended practices. You can access the [source code and documentation](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate) and use it to extend your current architecture or create new solutions.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/main/images/watsonx-orchestrate.svg",
       "provider_name": "IBM",
@@ -42,6 +42,10 @@
         {
           "title": "Sets up activity tracking for the watsonx Orchestrate instance",
           "description": "Optionally, you can deploy Cloud automation for Activity Tracker Event Routing to route and securely store auditing events that are related to your watsonx Orchestrate instance. [Learn more](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/base?topic=cloud-activity-tracking-events-watsonx-orchestrate)"
+        },
+        {
+          "title": "Composable and Extensible Architecture",
+          "description": "This architecture illustrates how Terraform IBM Modules(TIM) can be integrated to deliver a complete solution on IBM Cloud. Each module is a reusable, and validated component for security, compliance, and operational IBM best practices. You can deploy this architecture as-is or configure it as code by leveraging the underlying modules to fit your specific requirements. Explore the [source code and documentation](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate) to adapt, extend, or create entirely new solutions using these building blocks."
         }
       ],
       "support_details": "This product is in the community registry, support is handled through the [original repo](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate). If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-orchestrate/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
