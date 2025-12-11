@@ -38,7 +38,7 @@ output "next_steps_text" {
 }
 
 output "next_step_primary_label" {
-  value       = "Go to the Watsonx Orchestrate dashboard"
+  value       = "Go to the watsonx Orchestrate dashboard"
   description = "Primary label"
 }
 
@@ -48,7 +48,7 @@ output "next_step_primary_url" {
 }
 
 output "next_step_secondary_label" {
-  value       = "Learn more about IBM Watsonx Orchestrate"
+  value       = "Learn more about IBM watsonx Orchestrate"
   description = "Secondary label"
 }
 
