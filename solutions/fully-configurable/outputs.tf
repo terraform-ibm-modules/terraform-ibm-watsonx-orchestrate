@@ -33,22 +33,22 @@ output "dashboard_url" {
 }
 
 output "next_steps_text" {
-  value       = "Now, you can launch the Watsonx Orchestrate tool and create your agents."
+  value       = "Now you can create, configure and deploy your agents."
   description = "Next steps text"
 }
 
 output "next_step_primary_label" {
-  value       = "Go to Watsonx Orchestrate instance dashboard"
+  value       = "Go to the Watsonx Orchestrate dashboard"
   description = "Primary label"
 }
 
 output "next_step_primary_url" {
-  value       = "${module.watsonx_orchestrate.dashboard_url}?paneId=manage"
+  value       = module.watsonx_orchestrate.dashboard_url
   description = "Primary URL"
 }
 
 output "next_step_secondary_label" {
-  value       = "Learn more about Watsonx Orchestrate"
+  value       = "Learn more about IBM Watsonx Orchestrate"
   description = "Secondary label"
 }
 
