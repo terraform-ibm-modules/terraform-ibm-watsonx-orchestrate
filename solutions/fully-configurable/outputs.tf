@@ -33,7 +33,7 @@ output "dashboard_url" {
 }
 
 output "next_steps_text" {
-  value       = "Now you can create, configure and deploy your agents."
+  value       = "Now, you can use watsonx Orchestrate to create, configure and deploy your AI agents."
   description = "Next steps text"
 }
 
