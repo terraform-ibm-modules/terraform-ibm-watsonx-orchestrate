@@ -319,7 +319,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.1.0"
+              "version": "v1.11.0"
             },
             {
               "name": "deploy-arch-ibm-cloud-logs",
