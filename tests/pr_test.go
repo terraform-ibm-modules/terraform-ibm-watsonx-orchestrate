@@ -44,6 +44,7 @@ var validRegions = []string{
 	"eu-gb",
 	"eu-de",
 	"au-syd",
+	"br-sao",
 	"jp-tok",
 }
 
