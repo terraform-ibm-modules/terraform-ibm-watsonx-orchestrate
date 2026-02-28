@@ -71,12 +71,12 @@ variable "service_plan" {
 
 variable "resource_tags" {
   type        = list(string)
-  description = "Optional list of tags to describe the newly created watsonx Orchestrate instance."
+  description = "Add user resource tags to the Watsonx Orchestrate instance to organize, track, and manage costs. [Learn more](https://cloud.ibm.com/docs/account?topic=account-tag&interface=ui#tag-types)."
   default     = []
 }
 
 variable "access_tags" {
   type        = list(string)
-  description = "A list of access tags to apply to the watsonx Orchestrate instance. [Learn more](https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial)."
+  description = "Add access management tags to the Watsonx Orchestrate instance to control access. [Learn more](https://cloud.ibm.com/docs/account?topic=account-tag&interface=ui#create-access-console)."
   default     = []
 }
