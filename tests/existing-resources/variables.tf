@@ -38,12 +38,12 @@ variable "resource_group" {
 
 variable "access_tags" {
   type        = list(string)
-  description = "Add access management tags to the Watsonx Orchestrate instance to control access. [Learn more](https://cloud.ibm.com/docs/account?topic=account-tag&interface=ui#create-access-console)."
+  description = "Optional list of access management tags to add to the watsonx Orchestrate instance."
   default     = []
 }
 
 variable "resource_tags" {
   type        = list(string)
-  description = "Add user resource tags to the Watsonx Orchestrate instance to organize, track, and manage costs. [Learn more](https://cloud.ibm.com/docs/account?topic=account-tag&interface=ui#tag-types)."
+  description = "Optional list of tags to be added to the created resources."
   default     = []
 }
