@@ -15,6 +15,6 @@ variable "existing_watsonx_orchestrate_instance_crn" {
 
 variable "access_tags" {
   type        = list(string)
-  description = "Optional list of access management tags to add to the watsonx Orchestrate instance"
+  description = "Optional list of access management tags to add to the watsonx Orchestrate instance."
   default     = []
 }
