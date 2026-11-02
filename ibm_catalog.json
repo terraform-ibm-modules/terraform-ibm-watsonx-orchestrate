@@ -340,7 +340,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v2.1.7"
+              "version": "v2.1.10"
             },
             {
               "name": "deploy-arch-ibm-activity-tracker",
@@ -369,7 +369,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v2.1.7"
+              "version": "v2.1.9"
             },
             {
               "name": "deploy-arch-ibm-scc-workload-protection",
@@ -398,7 +398,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.22.21"
+              "version": "v1.22.22"
             }
           ],
           "dependency_version_2": true,
